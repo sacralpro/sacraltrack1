@@ -1,21 +1,19 @@
 "use client"
 {/* COMMENT SECTION HEAD */}
 
-
+import { useEffect, useRef, useState } from "react"
 import Comments from "@/app/components/post/Comments"
 import CommentsHeader from "@/app/components/post/CommentsHeader"
 import Link from "next/link"
 import { AiOutlineClose } from "react-icons/ai"
-import { BiChevronDown, BiChevronUp } from "react-icons/bi"
 import { useRouter } from "next/navigation"
 import ClientOnly from "@/app/components/ClientOnly"
-import { Post, PostPageTypes } from "@/app/types"
+import { PostPageTypes } from "@/app/types"
 import { usePostStore } from "@/app/stores/post"
 import { useLikeStore } from "@/app/stores/like"
 import { useCommentStore } from "@/app/stores/comment"
 import useCreateBucketUrl from "@/app/hooks/useCreateBucketUrl"
-import TopNav from "./includes/TopNav"
-import { useEffect, useRef, useState } from "react"
+//import TopNav from "./includes/TopNav"
 
 import WaveSurfer from "wavesurfer.js"
 import {
@@ -25,7 +23,9 @@ import {
     BsSkipBackward,
   } from "react-icons/bs";
 
-export default function Post({  post, params }: PostPageTypes) {
+  
+  export default function Post({ params }: PostPageTypes) {
+
 
    
 
@@ -83,8 +83,9 @@ export default function Post({  post, params }: PostPageTypes) {
             barWidth: 4,
           });
       
-          newWaveSurfer.load(useCreateBucketUrl(postById?.audio_url));
-          setWaveSurfer(newWaveSurfer);
+          if (postById?.audio_url) {
+  newWaveSurfer.load(useCreateBucketUrl(postById.audio_url));
+}
       
           newWaveSurfer.on("finish", () => {
             console.log("Песня завершена");
@@ -128,7 +129,7 @@ export default function Post({  post, params }: PostPageTypes) {
                 id="PostPage" 
                 className="lg:flex-col mt-[20px] rounded-xl items-center w-[700px]  h-[200px]  bg-black overflow-hidden "
                 style={{ 
-                    backgroundImage: `url(${useCreateBucketUrl(postById?.image_url)})`, 
+                    backgroundImage: `url(${postById?.image_url ? useCreateBucketUrl(postById.image_url) : ''})`,
                     backgroundSize: 'cover', 
                     backgroundPosition: 'center' 
                 }}

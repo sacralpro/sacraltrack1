@@ -133,13 +133,14 @@ export default function PostUser({ post, params }: PostUserCompTypes) {
             <div className=" bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[54px] flex items-between rounded-xl pt-0.5 ml-2">
                 <div className="pl-3 w-full px-2">
                     <div className="flex items-center justify-between pb-0.5">
-                    {post.profile && (
-                        <Link className="text-[#818BAC] size-[15px]" href={`/profile/${post.profile.user_id}`}>
-                            <span className="font-bold hover:underline cursor-pointer">
-                                {post.profile.name}
-                            </span>
-                        </Link>
-                    )}
+
+                    {post && post.profile && (
+    <Link className="text-[#818BAC] size-[15px]" href={`/profile/${post.profile.user_id}`}>
+        <span className="font-bold hover:underline cursor-pointer">
+            {post.profile.name}
+        </span>
+    </Link>
+)}
                     </div>
                     <p className="text-[14px] pb-0.5 break-words md:max-w-[400px] max-w-[300px]">{post.trackname}</p>
                 </div>
@@ -179,7 +180,7 @@ export default function PostUser({ post, params }: PostUserCompTypes) {
           </button>
 
           {isOpen && (
-              <div className="origin-top-right mt-[-200px] absolute flex z-50 mt-2 w-[100px] rounded-md shadow-lg bg-[#272B43] ring-1 ring-black ring-opacity-5">
+              <div className="origin-top-right mt-[-200px] absolute flex z-50  w-[100px] rounded-md shadow-lg bg-[#272B43] ring-1 ring-black ring-opacity-5">
                   <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                       <button onClick={() => handleItemClick('Item 1')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Item 1</button>
                       {contextUser?.user?.id == post?.user_id ? (
@@ -197,9 +198,6 @@ export default function PostUser({ post, params }: PostUserCompTypes) {
               </div>
           )}
       </div>
-      
-     
-
         
         </div>
         

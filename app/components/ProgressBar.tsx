@@ -1,7 +1,11 @@
-import { motion } from "framer-motion";
 import React from "react";
+import { motion } from "framer-motion";
 
-const ProgressBar = ({ progress }) => {
+interface ProgressBarProps {
+    progress: number;
+}
+
+const ProgressBar = ({ progress }: ProgressBarProps) => {
     return (
         <div>
             <motion.div 

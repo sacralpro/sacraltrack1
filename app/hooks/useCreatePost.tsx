@@ -7,7 +7,7 @@ const useCreatePost = async (
     userId: string,
     caption: string,
     trackname: string,
-    price: number,
+    //price: number,
     // mp3File: File, // Add mp3File parameter
     genre: string, // Add genre parameter
 ) => {
@@ -30,7 +30,7 @@ const useCreatePost = async (
                // mp3_url: mp3Id, // Store the MP3 file URL
                 image_url: imageId,
                 created_at: new Date().toISOString(),
-                price: 2,
+                //price: 2,
                 genre: genre,
             }
         );

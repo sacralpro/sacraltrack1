@@ -49,7 +49,7 @@ export interface Post {
     text: string;
     created_at: string;
     trackname: string;
-    genre: string;
+    //genre: string;
 }
 
 
@@ -62,7 +62,7 @@ export interface PostWithProfile {
     text: string;
     trackname: string;
     created_at: string;
-    genre: string;
+    //genre: string;
     profile: {
         user_id: string;
         name: string;
@@ -131,10 +131,12 @@ export interface CommentsCompTypes {
 
 export interface PostPageTypes {
     params: { userId: string; postId: string; };
+    
 }
 
 export interface ProfilePageTypes {
     params: { id: string; };
+
 }
 
 export interface SingleCommentCompTypes {
@@ -144,7 +146,7 @@ export interface SingleCommentCompTypes {
 
 export interface PostUserCompTypes {
     params: { userId: string; postId: string; };
-    post: Post
+    post: PostWithProfile
 }
 
 export interface PostMainCompTypes {
