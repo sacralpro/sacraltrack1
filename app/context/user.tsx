@@ -64,7 +64,8 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   return (
-      <UserContext.Provider value={{ user, register, login, logout, checkUser }}>
+      <UserContext.Provider value={{ user, register, login, logout, checkUser,       id: user?.id || null, // Add the 'id' property
+      }}>
           {children}
       </UserContext.Provider>
   );

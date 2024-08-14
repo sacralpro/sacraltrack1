@@ -9,7 +9,7 @@ const ProgressBar = ({ progress }: ProgressBarProps) => {
     return (
         <div>
             <motion.div 
-                style={{ width: "100%", height: 10, background: "lightgray" }} 
+                style={{ width: "100%", height: 6, background: "blue" }} 
                 initial={{ width: 0 }} 
                 animate={{ width: `${progress}%` }} 
             />

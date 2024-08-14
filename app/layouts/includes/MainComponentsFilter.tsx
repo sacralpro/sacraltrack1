@@ -35,7 +35,7 @@ export default function MainComponentsFilter() {
     return (
         <div>
             {isMobile ? (
-                <div className="ml-[20px] mt-[100px] hidden">
+                <div className="ml-[20px] mt-[100px] ">
                     <button onClick={goToPeople} className={`flex pl-2 pr-2 items-center bg-[#231c2c] rounded-xl py-1 hover:bg-[#1f1a23]`} style={{ marginTop: '10px' }}>
                         <AiOutlinePlus color="#fff" size={16}/>
                         <span className="px-2 py-1 font-medium text-[13px]">Downloads</span>

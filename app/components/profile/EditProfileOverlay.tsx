@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react"
 import { Cropper } from 'react-advanced-cropper';
 import 'react-advanced-cropper/dist/style.css'
@@ -37,6 +38,10 @@ export default function EditProfileOverlay() {
         setUserBio(currentProfile?.bio || '')
         setUserImage(currentProfile?.image || '')
     }, [])
+
+    console.log('Initial user image:', currentProfile?.image);
+    console.log('NEXT_PUBLIC_PLACEHOLDER_DEAFULT_IMAGE_ID:', process.env.NEXT_PUBLIC_PLACEHOLDER_DEAFULT_IMAGE_ID);
+    
 
     const getUploadedImage = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files && event.target.files[0];
@@ -117,7 +122,7 @@ export default function EditProfileOverlay() {
             >
                 <div 
                     className={`
-                        relative bg-[#15191F] w-full max-w-[700px] sm:h-[580px] h-[655px] mx-3 p-4 rounded-lg mb-10
+                        relative bg-[#15191F] w-full max-w-[700px] sm:h-[580px] h-[655px] mx-3 p-4 rounded-2xl mb-10
                         ${!uploadedImage ? 'h-[655px]' : 'h-[580px]'}
                     `}
                 >

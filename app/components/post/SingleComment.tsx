@@ -47,9 +47,9 @@ export default function SingleComment({ comment, params }: SingleCommentCompType
                             src={useCreateBucketUrl(comment.profile.image)}
                         />
                     </Link>
-                    <div className="ml-16 pt-0.5 w-full">
+                    <div className="ml-16 w-full">
 
-                        <div className="text-[18px] font-semibold flex items-center justify-between">
+                        <div className="text-[15px] font-semibold flex items-center justify-between">
                             <span className="flex items-center">
                                 {comment?.profile?.name} - 
                                 <span className="text-[12px] text-gray-600 font-light ml-1">
@@ -59,20 +59,7 @@ export default function SingleComment({ comment, params }: SingleCommentCompType
 
                             <div className="relative">
                             <button onClick={toggleDropdown} className="text-gray-600">
-                                <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                                />
-                                </svg>
+                               <img className="cursor-pointer" width="20" src="/images/dots.svg" />
                             </button>
 
                             {isOpen && (
@@ -87,7 +74,7 @@ export default function SingleComment({ comment, params }: SingleCommentCompType
                                 >
                                     {isDeleting 
                                         ? <BiLoaderCircle className="animate-spin" color="#E91E62" size="20"/>
-                                        : <BsTrash3 className="cursor-pointer" size="20"/>
+                                        : <BsTrash3 className="cursor-pointer" size="16"/>
                                     }
                                 </button>
                             ) : null}

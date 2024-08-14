@@ -10,11 +10,12 @@ export default function TextInput({ string, inputType, placeholder, error, onUpd
                 block
                 w-full
                 bg-[#272B43]
-                text-white
+                text-[white]
+                text-[13px]
                 border
                 border-[#8A5A9C]
-                border-0.5px
-                rounded-xl
+                border-0.2px
+                rounded-2xl
                 py-2.5
                 px-3
                 focus:outline-none
@@ -25,7 +26,7 @@ export default function TextInput({ string, inputType, placeholder, error, onUpd
             autoComplete="off"
         />
 
-        <div className="text-red-500 text-[14px] font-semibold">
+        <div className="text-[#F44747] text-[12px] font-semibold mt-2">
             {error ? (error) : null}
         </div>
     </>

@@ -4,6 +4,7 @@ import { ShowErrorObject } from "@/app/types";
 import { useUser } from "@/app/context/user";
 import { useGeneralStore } from "@/app/stores/general";
 import { BiLoaderCircle } from "react-icons/bi";
+import { account } from '@/libs/AppWriteClient'
 
 export default function Login() {
     let { setIsLoginOpen } = useGeneralStore();
@@ -15,12 +16,21 @@ export default function Login() {
     const [password, setPassword] = useState<string | ''>('');
     const [error, setError] = useState<ShowErrorObject | null>(null)
 
+
     const showError = (type: string) => {
         if (error && Object.entries(error).length > 0 && error?.type == type) {
             return error.message
         }
         return ''
     }
+
+   {/* async function handleLogin (){
+        account.create0Auth2Session(
+            'google',
+            'http://localhost:3000/',
+            'http://localhost:3000/fail',
+        )
+    } */}
 
     const validate = () => {
         setError(null)
@@ -55,10 +65,12 @@ export default function Login() {
 
     return (
         <>
-            <div>
+            <div className="w-full flex justify-center overflow-hidden">
+
+                <div className="w-[440px] flex flex-col justify-center items-center">
                 <h1 className="text-center text-[18px] mb-10 font-bold">Log in</h1>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-2 w-[100%]">
                     <TextInput 
                         string={email}
                         placeholder="Email address"
@@ -68,7 +80,7 @@ export default function Login() {
                     />
                 </div>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-2 w-[100%]">
                     <TextInput 
                         string={password}
                         placeholder="Password"
@@ -78,19 +90,31 @@ export default function Login() {
                     />
                 </div>
 
-                <div className="px-6 pb-2 mt-6">
+                <div className="px-6 pb-2 mt-6 w-[100%]">
                     <button 
                         disabled={loading}
                         onClick={() => login()} 
                         className={`
-                            flex items-center justify-center w-full text-[14px] font-semibold text-white py-6 rounded-xl
-                            ${(!email || !password) ? 'bg-gray-200' : 'bg-[#40C998]'}
+                            flex items-center justify-center w-full text-[14px] font-semibold text-white py-6 rounded-2xl
+                            ${(!email || !password) ? 'bg-[#40C998]         ' : 'bg-[#3fba8f]'}
                         `}
                     >
                         {loading ? <BiLoaderCircle className="animate-spin" color="#ffffff" size={25} /> : 'Log in'}
                     </button>
                 </div>
-            </div>
+
+                
+                {/*Google auth*/}
+
+                {/* IMG */}
+                </div>
+                <div className=" flex flex-col items-center justify-center w-[460px]">
+                    <img src="images/login.png" className=" object-contain  rounded-2xl "/>
+                </div>
+           
+
+            </div> 
+
         </>
     )
 }

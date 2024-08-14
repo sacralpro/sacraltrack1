@@ -31,9 +31,9 @@ export default function SideNavMain({ params }: ProfilePageTypes) {
                     <div 
                         id="SideNavMain" 
                         className={`
-                            fixed z-20 bg-[#272B43] pt-[10px] h-auto mt-[100px] ml-[20px] 
-                            overflow-auto p-[20px] rounded-[20px] justify-bottom
-                            flex flex-col items-center
+                            fixed z-20 bg-[#272B43] pt-[10px]  mt-[100px] ml-[20px] 
+                            overflow-auto p-[20px] rounded-2xl justify-bottom
+                            flex flex-col items-center w-[160px] h-[190px]
                             ${pathname === '/' ? 'lg:w-[290px] lg:h-[300px]' : 'lg:w-[290px] lg:h-[300px]'}
                         `}
                     >   
@@ -56,7 +56,7 @@ export default function SideNavMain({ params }: ProfilePageTypes) {
 
                             <ClientOnly>
                                 {currentProfile ? (
-                                    <img className="absolute left-0 mt-[5px] w-full max-h-[240px] object-cover rounded-xl" 
+                                    <img className="absolute left-0 mt-[5px] w-full max-h-[240px] object-cover rounded-2xl" 
                                     src={useCreateBucketUrl(currentProfile.image)} style={{ boxShadow: '0px 10px 10px -10px rgba(0, 0, 0, 0.3)' }} />
                                 ) : (
                                     <img src="/images/user.svg" className="min-w-full max-h-[300px] rounded-xl" />

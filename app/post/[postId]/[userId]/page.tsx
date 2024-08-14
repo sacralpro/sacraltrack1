@@ -62,7 +62,7 @@ import {
    
     {/* WaveSurfer */}
 
-    const [playPause, setPlayPause] = useState<boolean>(false);
+    const [isPlaying, setIsPlaying] = useState(false);
     const waveformRef = useRef<HTMLDivElement>(null);
     const [wavesurfer, setWaveSurfer] = useState<WaveSurfer | null>(null);
 
@@ -83,24 +83,19 @@ import {
             barWidth: 4,
           });
       
-          if (postById?.audio_url) {
-  newWaveSurfer.load(useCreateBucketUrl(postById.audio_url));
-}
+          if (postById?.mp3_url) {
+            newWaveSurfer.load(useCreateBucketUrl(postById.mp3_url));
+          }
       
           newWaveSurfer.on("finish", () => {
-            console.log("Песня завершена");
+            console.log("Song finished");
           });
       
           newWaveSurfer.on("ready", () => {
-            console.log("Волновая форма готова");
+            console.log("Waveform ready");
           });
       
-          const audio = document.getElementById(`audio${postById?.id}`) as HTMLAudioElement;
-          {/* Add event listeners to the audio element 
-          setTimeout(() => {
-            audio.addEventListener('mouseenter', () => { audio.play() });
-            audio.addEventListener('mouseleave', () => { audio.pause() });
-          }, 50); */}
+          setWaveSurfer(newWaveSurfer);
         }
       
         return () => {
@@ -108,26 +103,29 @@ import {
             wavesurfer.destroy();
           }
         };
-    }, [postById, useCreateBucketUrl]);
+      }, [postById]);
 
-      const handleStop = () => {
-        if (wavesurfer) {
-          wavesurfer.stop();
-        }
-      };
-      const handlePause = () => {
-        if (wavesurfer) {
-          wavesurfer.playPause();
-        }
-      };
-
+     {/* WaveSurfer PlayPause */}
+        // Update handlePause function to toggle the state
+        const handlePause = () => {
+            if (wavesurfer) {
+              if (isPlaying) {
+                wavesurfer.stop();
+                setIsPlaying(false);
+              } else {
+                wavesurfer.playPause();
+                setIsPlaying(true);
+              }
+            }
+          };
+          
 
     return (
         <> 
-            <div className="lg:flex-col w-full h-screen flex items-center justify-between overflow-auto">
+            <div className="lg:flex-col w-full h-screen md:flex px-[20px]  items-center justify-between overflow-auto">
             <div 
                 id="PostPage" 
-                className="lg:flex-col mt-[20px] rounded-xl items-center w-[700px]  h-[200px]  bg-black overflow-hidden "
+                className="lg:flex-col mt-[20px] rounded-2xl items-center w-max-[100%] md:w-[700px]  h-[200px]  bg-black overflow-hidden "
                 style={{ 
                     backgroundImage: `url(${postById?.image_url ? useCreateBucketUrl(postById.image_url) : ''})`,
                     backgroundSize: 'cover', 
@@ -136,14 +134,15 @@ import {
             >
 
               
-                <div className="lg:w-[full] h-[20vh] relative">
+                <div className="lg:w-[full] h-[20vh] md:w-full  relative">
 
                     {/* Close button */}
                     <Link
-                        href={`/profile/${params?.userId}`}
-                        className="absolute text-white z-20 m-5 rounded-xl bg-gray-700 p-1.5 hover:bg-gray-800"
+                     //   href={`/profile/${params?.userId}`}
+                     href={`/`}
+                        className="absolute text-white z-20 m-5 rounded-xl bg-gray-700 p-1.5 hover:bg-gray-800 opacity-90"
                     >
-                        <AiOutlineClose size="20"/>
+                        <AiOutlineClose size="18"/>
                     </Link>
 
                     {/* SLIDE through posts 
@@ -167,20 +166,17 @@ import {
 
                       {/* audio */}
 
-                    <div className="wavesurfer-controls absolute z-5 top-[43%] left-[43%] border b-4 border-color-white border-opacity-20 px-10 py-7 rounded-xl">
-                        <button onClick={handlePause}>
-                            <BsFillPlayFill />
-                        </button>
-                        <button className="hidden" onClick={handleStop}>
-                            <BsFillStopFill />
-                        </button>
+                    <div className="wavesurfer-controls absolute z-5 top-0 right-0  px-10 py-7 rounded-xl">
+                    <button onClick={handlePause}>
+                    {isPlaying ? <BsFillStopFill /> : <BsFillPlayFill />}
+                    </button>
                         </div>
 
                     <ClientOnly>
-                        {postById?.audio_url ? (
+                        {postById?.mp3_url ? (
                       
                             <div className="flex overflow-hidden h-[40px] mb-16 w-full">
-                                <div style={{ transform: 'translateY(-40px)' }}>
+                                <div style={{  }}>
                                     <div ref={waveformRef} className="wavesurfer-container" />
                                 </div>
                             </div>
@@ -188,9 +184,9 @@ import {
                         ) : null} 
 
                          <div className="bg-black bg-opacity-70 lg:min-w-[480px] z-10 relative">
-                            {postById?.audio_url ? (
+                            {postById?.mp3_url ? (
                                  <div className="flex overflow-hidden h-[40px] mb-16 w-full">
-                                    <div style={{ transform: 'translateY(-40px)' }}>
+                                    <div style={{  }}>
                                         <div ref={waveformRef} className="wavesurfer-container" />
                                     </div>
                                 </div>
@@ -205,8 +201,8 @@ import {
 
                 {/* Comments */}
 
-                <div id="InfoSection" className="absolute top-0 right-2 lg:max-w-[full] rounded-xl h-[80vh] bg-[#]">
-                    <div className="py-7" />
+                <div id="InfoSection" className="absolute top-0 right-2 lg:max-w-[full] rounded-2xl h-[80vh] bg-[#]">
+                    <div className="mt-[20px]" />
 
                         <ClientOnly>
                             {postById ? (
@@ -216,7 +212,7 @@ import {
                       
  
                 </div>
-                <div id="InfoSection" className="relative lg:max-w-[full]  w-[700px] rounded-xl h-[80vh] mt-6 bg-[#]">
+                <div id="InfoSection" className="relative lg:max-w-[full]  w-max-[100%] md:w-[700px]  rounded-2xl h-[80vh] mt-2 bg-[#] ">
                   
 
                     

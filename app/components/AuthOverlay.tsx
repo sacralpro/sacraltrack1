@@ -13,23 +13,23 @@ export default function AuthOverlay() {
         <>
             <div 
                 id="AuthOverlay" 
-                className="fixed flex items-center justify-center z-50 top-0 left-0 w-full h-full bg-black bg-opacity-50"
+                className=" flex fixed items-center justify-center z-50 top-0 left-0 w-full h-full bg-black bg-opacity-50"
             >
-                <div className="relative bg-[#1A1F2B] w-full max-w-[470px] h-[70%] p-4 rounded-lg">
+                <div className="relative bg-[#1A1F2B] w-full max-w-[800px] h-[500px] p-2 rounded-2xl">
 
-                    <div className="w-full flex justify-end">
-                        <button onClick={() => setIsLoginOpen(false)} className="p-1.5 rounded-full bg-[#272B43]">
+                    <div className="w-full flex justify-end absolute top-4 right-4">
+                        <button onClick={() => setIsLoginOpen(false)} className="p-4 rounded-2xl bg-[#272B43] opacity-90">
                             <AiOutlineClose size="16"/>
                         </button>
                     </div>
 
                     {isRegister ? <Register /> : <Login />}
 
-                    <div className="absolute flex items-center justify-center py-5 left-0 bottom-0 w-full">
+                    <div className="absolute flex items-left justify-left py-5 left-0 bottom-0 w-full ml-8">
                         <span className="text-[14px] text-white">Don’t have an account?</span>
 
-                        <button onClick={() => setIsRegister(isRegister = !isRegister)} className="text-[14px] text-[#F02C56] font-semibold pl-1" >
-                            <span>{!isRegister ? 'Register' : 'log in'}</span>
+                        <button onClick={() => setIsRegister(isRegister = !isRegister)} className="text-[14px] text-[#DA4A9A] font-semibold pl-1" >
+                            <span>{!isRegister ? 'Sign up' : 'log in'}</span>
                         </button>
                     </div>
 

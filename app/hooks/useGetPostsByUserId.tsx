@@ -16,10 +16,13 @@ const useGetPostsByUser = async (userId: string) => {
                 id: doc?.$id, 
                 user_id: doc?.user_id,
                 audio_url: doc?.audio_url,
+                mp3_url: doc?.mp3_url,
                 trackname: doc?.trackname,
                 image_url: doc?.image_url,
                 text: doc?.text,
                 created_at: doc?.created_at,
+                price: doc?.price,
+                genre: doc?.genre,
             }
         })
         

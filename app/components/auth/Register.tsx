@@ -6,7 +6,7 @@ import { useUser } from "@/app/context/user";
 import { BiLoaderCircle } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 
-export default function Register() {
+export default function Register() { 
     let { setIsLoginOpen } = useGeneralStore();
 
     const contextUser = useUser()
@@ -74,10 +74,12 @@ export default function Register() {
 
     return (
         <>
-            <div>
-                <h1 className="text-center text-[28px] mb-4 font-bold">Register</h1>
+            <div className="w-full flex justify-center overflow-hidden">
 
-                <div className="px-6 pb-2">
+                <div className="w-[440px] flex flex-col justify-center items-center">
+                <h1 className="text-center text-[18px] mb-4 font-bold">Sign up</h1>
+
+                <div className="px-6 pb-2 w-[100%]">
 
                     <TextInput 
                         string={name}
@@ -89,7 +91,7 @@ export default function Register() {
                     
                 </div>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-2 w-[100%]">
 
                     <TextInput 
                         string={email}
@@ -101,7 +103,7 @@ export default function Register() {
                     
                 </div>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-2 w-[100%]">
                     <TextInput 
                         string={password}
                         placeholder="Password"
@@ -111,7 +113,7 @@ export default function Register() {
                     />
                 </div>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-2 w-[100%]">
                     <TextInput 
                         string={confirmPassword}
                         placeholder="Confirm Password"
@@ -121,7 +123,7 @@ export default function Register() {
                     />
                 </div>
 
-                <div className="px-6 pb-2 mt-6">
+                <div className="px-6 pb-2 mt-6 w-[100%]">
                     <button 
                         disabled={loading}
                         onClick={() => register()} 
@@ -130,10 +132,18 @@ export default function Register() {
                             ${(!name || !email || !password || !confirmPassword) ? 'bg-[#40C998]' : 'bg-[#F02C56]'}
                         `}
                     >
-                        {loading ? <BiLoaderCircle className="animate-spin" color="#ffffff" size={25} /> : 'Register'}
+                        {loading ? <BiLoaderCircle className="animate-spin" color="#ffffff" size={25} /> : 'Sign up'}
                     </button>
                 </div>
             </div>
+            
+
+            <div className=" flex flex-col items-center justify-center w-[460px]">
+                    <img src="images/reg.png" className=" object-contain  rounded-2xl "/>
+                </div>
+           
+
+                </div>
         </>
     )
 }

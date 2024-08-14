@@ -17,10 +17,13 @@ const useGetAllPosts = async () => {
                 id: doc?.$id,
                 user_id: doc?.user_id,
                 audio_url: doc?.audio_url, 
+                mp3_url: doc?.mp3_url,
                 image_url: doc?.image_url,
                 trackname: doc?.trackname,
                 text: doc?.text,
                 created_at: doc?.created_at,
+                price: doc?.price,
+                genre: doc?.genre,
                 profile: {
                     user_id: profile?.user_id,
                     name: profile?.name,

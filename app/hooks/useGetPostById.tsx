@@ -15,11 +15,13 @@ const useGetPostById = async (id: string) => {
             id: post?.$id, 
             user_id: post?.user_id,
             audio_url: post?.audio_url,
+            mp3_url: post?.mp3_url,
             trackname: post?.trackname,
             image_url: post?.image_url,
             text: post?.text,
             created_at: post?.created_at,
             price: post?.price,
+            genre: post?.genre,
             profile: {
                 user_id: profile?.user_id,  
                 name: profile?.name,
