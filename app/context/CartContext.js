@@ -181,7 +181,7 @@ export const CartProvider = ({ children }) => {
         console.log("Clearing cart from localStorage after logout");
         localStorage.removeItem("cart");
         setCart(null);
-      }
+      } 
     }, [user]);
     
     return (

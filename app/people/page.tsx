@@ -29,7 +29,7 @@ export default function People() {
   return (
     <>
       <MainLayout>
-        <div className="mt-[80px] w-full max-w-[690px] ml-auto" style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div className="mt-[80px] w-full  max-w-[690px] ml-auto" style={{ display: 'flex', flexWrap: 'wrap' }}>
           <ClientOnly>
             {userList.map(user => (
               <UserProfileCard key={user.id} profile={user} />

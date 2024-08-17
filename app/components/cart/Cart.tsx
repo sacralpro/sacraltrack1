@@ -233,7 +233,7 @@ const Cart: React.FC<{ post: PostMainCompTypes | null }> = ({ post = null }) => 
                              {/*   <img className="rounded-[15px] max-h-[50px] w-[50px]" src={useCreateBucketUrl(post?.profile?.image)} /> */}
                             </div>
 
-                            <a href="#" className="hover:text-blue-600 text-white">
+                            <a href="#" className="hover:text-blue-600 text-white ml-2 text-[13px]">
                                 {cartItem.name}
                             </a>
 
