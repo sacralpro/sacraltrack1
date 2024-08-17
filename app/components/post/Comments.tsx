@@ -62,7 +62,7 @@ export default function Comments({ params }: CommentsCompTypes) {
                     {/* Comments input field */}
             <div 
                 id="CreateComment" 
-                className="absolute flex items-center justify-between bottom-1 bg-[#0d1015] rounded-2xl my-5 h-[100px] lg:max-w-[700px] w-full py-5 px-8 "
+                className="absolute flex items-center justify-between bottom-5 bg-[#0d1015] rounded-2xl my-5 h-[100px] lg:max-w-[700px] w-full py-5 px-8 "
             >
                 <div 
                     className={`

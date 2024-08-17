@@ -1,6 +1,6 @@
 export default function TermsOfUseCard() {
     return (
-      <div className="bg-[#272B43] rounded-2xl p-4 max-w-[408px]">
+      <div className="bg-[#272B43] rounded-2xl p-4  hidden md:flex md:max-w-[408px]">
         <div className=" items-center justify-between">
 
           <p>

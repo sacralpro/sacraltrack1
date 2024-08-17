@@ -51,14 +51,14 @@ const ProfileComponents = () => {
     return (
         <div>
             {isMobile ? (
-                 <div className="ml-[20px] mt-[320px]">
+                 <div className="ml-[20px] mt-[240px]">
                    <button
             onClick={toggleShowPaidPosts}
             className={`flex items-center bg-[#231c2c] rounded-xl py-2 px-3 hover:bg-[#1f1a23] transition-colors duration-300`}
           >
                            <img src="/images/downloads.svg" alt="downloads" />
             <span className="ml-2 font-medium text-[14px] text-white">
-              {showPaidPosts ? 'Hide Downloads' : 'Show Downloads'}
+              {showPaidPosts ? 'Hide' : 'Show'}
             </span>
           </button>
                     {/*

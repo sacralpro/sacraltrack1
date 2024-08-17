@@ -4,14 +4,11 @@ import useWithdrawRoyalty from "@/app/hooks/useWithdrawRoyalty";
 import { useUser } from "@/app/context/user";
 import useGetRoyaltyBalanceAfterWithdraw from "@/app/hooks/useGetRoyaltyBalanceAfterWithdraw";
 import { useGetRoyaltyBalance } from "@/app/hooks/useGetRoyaltyBalance";
-import { UserContextTypes } from "@/app/types";
-
 
 interface CardFormProps {
   onSubmit: (cardDetails: { cardNumber: string, cardExpiry: string, cardCVC: string, firstName: string, lastName: string }, 
     amount: number) => void;
-    amount: number;
-
+  amount: number;
 }
 
 const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
@@ -20,7 +17,7 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
   const [cardCVC, setCardCVC] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const  user  = useUser();
+  const user = useUser();
   
   const { withdrawRoyalty } = useWithdrawRoyalty();
   const { royaltyBalance } = useGetRoyaltyBalance();
@@ -28,6 +25,21 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
   const [royaltyBalanceAfterWithdraw, setRoyaltyBalanceAfterWithdraw] = useState<number>(0);
 
   const handleSubmission = async () => {
+   {/* if (amount < 10) {
+      toast.error('Withdrawal is available from $10', {
+        duration: 10000,
+        style: {
+          background: '#1A2338',
+          color: '#20DDBB',
+          padding: '16px 24px',
+          borderRadius: '8px',
+          fontSize: '16px',
+          fontWeight: 'bold',
+        },
+      });
+      return;
+    } */}
+
     if (cardNumber.trim() === '' || cardExpiry.trim() === '' || firstName.trim() === '' || lastName.trim() === '') {
       toast.error('Please fill in all card details.');
     } else if (user && user.id !== null) {
@@ -88,17 +100,16 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
       toast.error('Unable to retrieve user ID. Please try again later.');
     }
   };
-  
 
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\s/g, '');
-    const formattedValue = value.replace(/(\d{4})/g, '$1 ');
+    const formattedValue = value.replace(/(\d{4})/g, '$1 ').trim();
     setCardNumber(formattedValue);
   };
 
   const handleCardExpiryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, '');
-    const formattedValue = value.replace(/(\d{2})(\d{2})/, '$1/$2');
+    const formattedValue = value.replace(/(\d{2})(\d{2})/, '$1/$2').trim();
     setCardExpiry(formattedValue);
   };
 
@@ -115,11 +126,8 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
     setLastName(e.target.value);
   };
 
-  
-
-  
   return (
-    <div className="bg-[#1A2338] rounded-2xl p-8 w-full max-w-[500px] flex flex-col gap-6">
+    <div className="bg-[#1A2338] rounded-2xl w-full max-w-[500px] flex flex-col gap-6">
       <div className="relative">
         <div
           className={`absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#20DDBB] to-[#1A2338] rounded-2xl transition-all duration-500 ${
@@ -133,7 +141,6 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
             <div className="text-white text-2xl font-bold">Credit Card</div>
           </div>
 
-          {/*NAME */}
           <div className="flex-1 bg-[#272B43] rounded-lg p-4 flex flex-col gap-2">
             <div className="text-[#838383] text-sm">First Name</div>
             <input
@@ -177,33 +184,35 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
                 placeholder="MM/YY"
               />
             </div>
-            <div className="flex-1 bg-[#272B43] rounded-lg p-4 flex flex-col gap-2">
-           {/*  <div className="text-[#838383] text-sm">CVC</div>
-           <input
+            <div className="flex-1 bg-[#272B43] rounded-lg p-4  flex-col gap-2 hidden">
+              {/* CVC Input Field */}
+              {/* <div className="text-[#838383] text-sm">CVC</div>
+              <input
                 type="text"
                 value={cardCVC}
                 onChange={handleCardCVCChange}
                 className="bg-transparent text-white text-xl font-bold focus:outline-none"
                 maxLength={3}
                 placeholder="123"
-            /> */}
+              /> */}
             </div>
-            </div>
-            </div>
-            </div>
-            <button
+          </div>
+        </div>
+      </div>
+      <button
         className="bg-[#20DDBB] text-white rounded-lg py-3 font-bold hover:bg-[#1AA89C] transition-colors duration-300"
         onClick={handleSubmission}
-      >
-        Request Withdrawal
-      </button>
-      <div className="mt-4 text-center">
-      <a href="http://t.me/sashaplayra" className="text-[#20DDBB] hover:underline" target="_blank" rel="noopener noreferrer">
-      Need help? Ask our manager.
-        </a>
+        >
+          Request Withdrawal
+        </button>
+        <div className="mt-4 text-center">
+          <a href="http://t.me/sashaplayra" className="text-[#20DDBB] hover:underline" target="_blank" rel="noopener noreferrer">
+            Need help? Ask our manager.
+          </a>
+        </div>
       </div>
-    </div>
-  );
-};
-
-export default CardForm;
+    );
+  };
+  
+  export default CardForm;
+  

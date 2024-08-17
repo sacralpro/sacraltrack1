@@ -17,7 +17,7 @@ const UserProfileCard = ({ profile }: UserProfileCompTypes) => {
             <Link href={`/profile/${profile.user_id}`}>
             <div
                 id={`UserProfile-${profile.user_id}`}
-                className="flex flex-col items-center mt-5 mb-5 mx-5 rounded-xl max-w-sm bg-[#1E2136] shadow-lg h-[400px] w-[700px] overflow-hidden"
+                className="flex flex-col items-center mt-5 mb-5 mx-5 rounded-xl max-w-sm bg-[#1E2136] shadow-lg h-[400px] w-[350px] md:w-[700px] overflow-hidden"
                 style={{ position: 'relative', backgroundImage: `url(${userProfileImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
 
             >

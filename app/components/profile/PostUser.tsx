@@ -128,7 +128,7 @@ export default function PostUser({ post, params }: PostUserCompTypes) {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
             }}
-            className={`relative flex flex-col justify-between p-2 mb-5 mt-2 object-cover rounded-2xl w-md:max-w-[500px] max-w-[720px] h-[500px] overflow-hidden`}
+            className={`relative flex flex-col justify-between p-2 mb-5 mt-2 object-cover rounded-2xl md:mr-[0px] mr-[40px] md:w-[500px] w-[240px] h-[500px] overflow-hidden`}
         >
 
            

@@ -32,8 +32,8 @@ export default function SideNavMain({ params }: ProfilePageTypes) {
                         id="SideNavMain" 
                         className={`
                             fixed z-20 bg-[#272B43] pt-[10px]  mt-[100px] ml-[20px] 
-                            overflow-auto p-[20px] rounded-2xl justify-bottom
-                            flex flex-col items-center w-[160px] h-[190px]
+                            overflow-hidden p-[20px] rounded-2xl justify-bottom
+                            flex flex-col items-center w-[80px] h-[120px] 
                             ${pathname === '/' ? 'lg:w-[290px] lg:h-[300px]' : 'lg:w-[290px] lg:h-[300px]'}
                         `}
                     >   

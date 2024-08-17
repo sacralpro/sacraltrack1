@@ -216,7 +216,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                      )}
                     
                     {showGenresPopup && (
-                        <div className="absolute z-10 top-0 right-0 p-2 left-0 mt-[80px] mx-5 bg-[#272B43] rounded-lg shadow-lg">
+                        <div className="absolute z-10 top-0 right-0 p-2 left-0 mt-[80px]  bg-[#272B43] rounded-2xl shadow-2xl">
                         <ul className=" grid grid-cols-2 gap-2">
                             {genres.map((genre) => (
                             <li
@@ -252,34 +252,33 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                             />
                              <ClientOnly>
 
-                                {/* Search Profile */}
-                             {searchProfiles.length > 0 ?
-                        <div className="absolute bg-[#0D2D3F] max-w-[910px] h-auto w-full z-20 left-0 top-12 rounded-xl p-2 shadow-2xl">
-                            {searchProfiles.map((result, index) => (
-                            <div className="p-1" key={index}>
-                                <Link
-                            href={result.type === "track" ? `/post/${result.id}/${result.profile?.user_id}` : `/profile/${result.id}`}
-                            className="flex items-center justify-between w-full cursor-pointer hover:bg-[#1E2136] rounded-xl p-2 px-2 hover:text-white text-13px"
-                            >
-                            <div className="flex items-center">
-                                {result.type === "track" ? (
-                                <>
-                                    <img className="rounded-2xl" width="40" src={useCreateBucketUrl(result.image || '')} />
-                                    <div className="truncate ml-2">{result?.name}</div>
-                                </>
-                                ) : (
-                                <>
-                                    <img className="rounded-2xl" width="40" src={useCreateBucketUrl(userContext?.user?.image || '')} />
-                                    <div className="truncate ml-2">{result.name}</div>
-                                </>
-                                )}
-                            </div>
-                            </Link>
+                                {/* Search Profile */}{searchProfiles.length > 0 ?
+                                    <div className="absolute bg-[#0D2D3F] max-w-[910px] h-auto w-full z-20 left-0 top-12 rounded-xl p-2 shadow-2xl">
+                                    {searchProfiles.map((result, index) => (
+                                        <div className="p-1" key={index}>
+                                        <Link
+                                            href={result.type === "track" ? `/post/${result.id}/${result.profile?.user_id}` : `/profile/${result.id}`}
+                                            className="flex items-center justify-between w-full cursor-pointer hover:bg-[#1E2136] rounded-xl p-2 px-2 hover:text-white text-13px"
+                                        >
+                                            <div className="flex items-center">
+                                            {result.type === "track" ? (
+                                                <>
+                                                <img className="rounded-2xl" width="40" src={useCreateBucketUrl(result.image || '')} />
+                                                <div className="truncate ml-2">{result?.name}</div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                <img className="rounded-2xl" width="40" src={useCreateBucketUrl(result.image || '')} />
+                                                <div className="truncate ml-2">{result.name}</div>
+                                                </>
+                                            )}
+                                            </div>
+                                        </Link>
+                                        </div>
+                                    ))}
+                                    </div>
+                                    : null}
 
-                            </div>
-                            ))}
-                        </div>
-                        : null}
 
                             </ClientOnly>
 
@@ -304,27 +303,27 @@ const handleSearchName = async (event: { target: { value: string } }) => {
 
                     <div className="flex items-center gap-3 ">  
                     
-
-                 
-                    {/* Release a track button */}
                     
-                    <div className="flex items-center gap-4 ">
-                        <button 
-                            onClick={() => goTo()}
-                            className="flex pl-[15px] pr-[15px] items-center bg-[#20DDBB] rounded-2xl py-[6px] hover:bg-[#21C3A6]"
-                        >
-                            <img className="w-[18px] h-[18px] " src="/images/wave.svg"/>
-                            <span className="px-2 py-1 font-medium text-[13px]">Release <span className="px-1 py-1 font-medium text-[13px] hidden md:inline">a track</span></span>
+                    {/* Release a track button */}
+                    <div className="flex items-center gap-4">
+                    <button 
+                        onClick={() => goTo()}
+                        className="flex pl-[15px] pr-[15px] items-center bg-[#20DDBB] rounded-2xl py-[6px] hover:bg-[#21C3A6]"
+                    >
+                        <img className="w-[18px] h-[18px]" src="/images/wave.svg" />
+                        <span className="px-2 py-1 font-medium text-[13px] h-[30px] md:hidden"></span>
+                        <span className="px-1 py-1 font-medium text-[13px] hidden md:inline">Release a track</span>
                     </button>
                     </div>
+
                  
                     {/* CART button */} 
 
                         <button 
                         onClick={() => goToCart()}
-                        className="w-[86px] bg-[#1A2338] rounded-2xl h-[44px] flex items-center justify-end">
-                            <span className="font-medium text-[12px]">{cartItems?.length || 0}</span>
-                            <div className="ml-2 h-[40px] w-[50px] bg-[#20DDBB] flex items-center justify-center rounded-2xl right-0 hover:bg-[#21C3A6]">
+                        className="md:w-[86px] w-[44px] bg-[#1A2338] rounded-2xl h-[44px] flex items-center justify-end">
+                            <span className="font-medium text-[12px] hidden md:inline">{cartItems?.length || 0}</span>
+                            <div className="md:ml-2 ml-0 h-[40px] w-[50px] bg-[#20DDBB] flex items-center justify-center rounded-2xl right-0 hover:bg-[#21C3A6]">
                                 <img src="/images/cart.svg" alt="cart" />
                             </div>
                         </button>
@@ -354,7 +353,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                                     </button>
                                     
                                     {showMenu ? (
-                                        <div className="absolute bg-[#1A2338] rounded-lg py-1.5 w-[200px] shadow-xl top-[40px] right-0">
+                                        <div className="absolute bg-[#1A2338] rounded-xl mt-5 mr-[-8px] py-1.5 w-[200px] shadow-xl top-[40px] right-0">
                                             <button 
                                                 onClick={() => { 
                                                     router.push(`/profile/${userContext?.user?.id}`)

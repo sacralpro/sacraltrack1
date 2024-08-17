@@ -153,7 +153,7 @@ const PaidPosts: React.FC<PaidPostsProps> = ({ userId, posts }) => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
-        className={`relative flex flex-col justify-between p-2 mt-5 mb-5 mx-5 object-cover rounded-[20px] h-[500px] overflow-hidden`}
+        className={`relative flex flex-col justify-between p-2 mt-5 mb-5 mx-5 object-cover rounded-[20px] md:mr-[0px] mr-[40px] md:w-[500px] w-[240px] h-[500px] overflow-hidden`}
       >
         <div className="flex justify-between">
           {/* Profile Image */}

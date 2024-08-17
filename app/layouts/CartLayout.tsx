@@ -38,7 +38,7 @@ export default function CartLayout({ children }: { children: React.ReactNode }) 
                 <Preloader />
             ) : (
                 <>
-                    <TopNav params={{ id: userContext?.user?.id as string }} />
+                    <TopNav params={{ id: userContext?.user?.id as string }}/>
 
         
         <div className="flex justify-between mx-auto w-full px-0">
@@ -67,12 +67,12 @@ export default function CartLayout({ children }: { children: React.ReactNode }) 
 
             </div>
 
-            <div className="hidden md:flex justify-end bg-[#15191F] w-[300px] pr-[20px]">
+            <div className="hidden md:flex justify-end bg-[#15191F] md:w-[300px] w-[300px]">
             <motion.div
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="hidden md:flex justify-end bg-[#15191F] w-[300px] pr-[20px]"
+                className="hidden md:flex justify-end bg-[#15191F] w-[300px] right-5"
             >
                 {/*CartSideBar*/}
                     </motion.div>

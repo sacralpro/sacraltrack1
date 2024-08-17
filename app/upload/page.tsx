@@ -15,6 +15,8 @@ import { FFmpeg } from '@ffmpeg/ffmpeg';
 import toast from 'react-hot-toast';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Link from "next/link";
+import UploadModal from "@/app/components/UploadModal";
+
 
 //import { mp3Blob } from '@/app/utils/audioConverter';
 
@@ -28,7 +30,13 @@ export default function Upload() {
     const [isPostClicked, setIsPostClicked] = useState(false);
     const [mp3Blob, setMp3Blob] = useState<Blob | null>(null);
     const [mp3Url, setMp3Url] = useState<string | null>(null);
- 
+    const [isModalOpen, setIsModalOpen] = useState(true); // State to control modal visibility
+
+
+    // Modal
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
     
     const handleGenreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setGenre(e.target.value);
@@ -248,6 +256,8 @@ export default function Upload() {
     return (
         <>
                 <UploadLayout>
+                 {isModalOpen && <UploadModal onClose={closeModal} />}
+
                     <div className="flex flex-col items-center justify-center h-screen w-full shadow-lg rounded-md py-6 md:px-10 px-4">
                    
 
@@ -269,7 +279,7 @@ export default function Upload() {
 
                         {/* TRACK NAME */}
                         <div className="flex items-center align-center">
-                        <div className="mt-4 sm:w-[566px] w-[290px] sm:mr-[20px] mr-5">
+                        <div className="mt-4 sm:w-[566px] w-[180px] sm:mr-[20px] mr-5">
                                 <div className="flex items-center justify-between">
                                 </div>
                                 <input 
@@ -423,7 +433,7 @@ export default function Upload() {
                             {/* <h2 className="text-gray-400 mt-1">Send your track for release</h2> */}
                         </div>
 
-                    <div className="mx-auto mt-5 mb-6 w-full md:w-[728px] h-[180px] text-center p-1 border-2 border-dashed border-[#1E2136] rounded-lg hover:bg-[#1E2136] cursor-pointer">
+                    <div className="mx-auto mt-5 mb-6  md:w-[728px] w-[350px] h-[180px] text-center p-1 border-2 border-dashed border-[#1E2136] rounded-lg hover:bg-[#1E2136] cursor-pointer">
                     {!fileDisplayImage ? (
                         <label
                             htmlFor="fileInputImage"
@@ -433,7 +443,7 @@ export default function Upload() {
                                 flex-col 
                                 items-center 
                                 justify-center 
-                                w-full
+                                md:w-[728px] w-[350px]
                                 h-full
                                 text-center 
                                 p-1 
@@ -461,7 +471,7 @@ export default function Upload() {
                                                     flex 
                                                     items-center 
                                                     justify-center 
-                                                    w-full 
+                                                    md:w-[728px] w-[350px]
                                                     h-full
                                                     p-2
                                                     rounded-2xl
@@ -497,15 +507,14 @@ export default function Upload() {
 
                 {/*CAPTION*/}
                 <div className="mt-5">
-                                <div className="flex items-center justify-between">
+                                <div className="flex items-center justify-between ">
                                 </div>
                                 <input 
                             maxLength={150}
                             type="text"
                             className="
                                 bg-[#1E2136]
-                                md:w-[728px]
-                                w-[428px]
+                                md:w-[728px] w-[350px]
                                 border-[0.5px solid#1E2136]
                                 p-4
                                 rounded-md

@@ -166,7 +166,7 @@ import {
 
                       {/* audio */}
 
-                    <div className="wavesurfer-controls absolute z-5 top-0 right-0  px-10 py-7 rounded-xl">
+                    <div className="wavesurfer-controls absolute z-5 top-0 m-[-6px] right-0  px-10 py-7 rounded-xl">
                     <button onClick={handlePause}>
                     {isPlaying ? <BsFillStopFill /> : <BsFillPlayFill />}
                     </button>

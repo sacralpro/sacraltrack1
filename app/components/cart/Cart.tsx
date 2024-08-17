@@ -223,7 +223,7 @@ const Cart: React.FC<{ post: PostMainCompTypes | null }> = ({ post = null }) => 
                 {cart.cartItems.map((cartItem: CartItem, index: number) => (
                     <div
                         key={index}
-                        className="relative md:w-[720px] w-[428px] h-[500px] bg-cover bg-center rounded-2xl mb-5 pt-2 p-2"
+                        className="relative md:w-[720px] w-[300px] h-[500px] bg-cover bg-center rounded-2xl mb-5 pt-2 p-2"
                         style={{
                             backgroundImage: `url(${useCreateBucketUrl(cartItem.image)})`
                         }}

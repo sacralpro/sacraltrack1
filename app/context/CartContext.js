@@ -10,8 +10,10 @@ import useRestoreCartSession from "../hooks/useRestoreCartSession";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const { user } = useUser() || {};
+  
   const [cart, setCart] = useState(null);
+  const { user, logout } = useUser() || {};
+
 
   const contextUser = useUser() || {};
 
@@ -172,10 +174,19 @@ export const CartProvider = ({ children }) => {
       localStorage.removeItem("cart");
       calculateCartTotal(); // Clear cart total after successful payment
     };
+
+     // Add this code to clear the cart after logout
+    useEffect(() => {
+      if (!user) {
+        console.log("Clearing cart from localStorage after logout");
+        localStorage.removeItem("cart");
+        setCart(null);
+      }
+    }, [user]);
     
     return (
       <CartContext.Provider
-        value={{
+        value={{ 
           cart,
           addItemToCart,
           deleteItemFromCart,

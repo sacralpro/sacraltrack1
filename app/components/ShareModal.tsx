@@ -16,23 +16,25 @@ const ShareModal: React.FC<ShareModalProps> = ({
   trackImageUrl,
   trackTitle,
 }) => {
-  const shareOnTelegram = () => {
-    const telegramUrl = `https://t.me/share/url?url=https://yourwebsite.com/posts/${postId}&text=${trackTitle} Слушайте новые эксклюзивные треки на Sacral Track&photo=${trackImageUrl}&w=600&h=340`;
-    window.open(telegramUrl, '_blank');
-    onClose();
-  };
+ const shareOnTelegram = () => {
+  const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(`https://sacraltrack.store/post/${postId}`)}&text=${encodeURIComponent('Слушайте новые эксклюзивные треки на Sacral Track')}&photo=${encodeURIComponent(trackImageUrl)}`;
+  window.open(telegramUrl, '_blank');
+  onClose();
+};
 
-  const shareOnFacebook = () => {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com/posts/${postId}&quote=${trackTitle}`;
-    window.open(facebookUrl, '_blank');
-    onClose();
-  };
 
-  const shareOnVk = () => {
-    const vkUrl = `https://vk.com/share.php?url=https://yourwebsite.com/posts/${postId}&title=${trackTitle}`;
-    window.open(vkUrl, '_blank');
-    onClose();
-  };
+const shareOnFacebook = () => {
+  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://sacraltrack.store/post/${postId}`)}&quote=${encodeURIComponent(trackTitle)}`;
+  window.open(facebookUrl, '_blank');
+  onClose();
+};
+
+
+ const shareOnVk = () => {
+  const vkUrl = `https://vk.com/share.php?url=${encodeURIComponent(`https://sacraltrack.store/post/${postId}`)}&title=${encodeURIComponent(trackTitle)}`;
+  window.open(vkUrl, '_blank');
+  onClose();
+};
 
   if (!isOpen) return null;
 

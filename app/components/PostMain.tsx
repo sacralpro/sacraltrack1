@@ -104,7 +104,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
           backgroundPosition: 'center',
         }}
         className={`relative flex flex-col justify-between p-2 mt-5 mb-5 mx-5 
-          object-cover rounded-[20px] h-[500px] overflow-hidden w-[408px]
+          object-cover rounded-[20px] h-[500px] overflow-hidden w-[350px]
           ${pathname === '/' ? ' lg:w-[700px]' : 'w-full lg:w-[500px]'}`}
       >
           <div className="flex justify-between">
@@ -139,9 +139,9 @@ export default function PostMain({ post }: PostMainCompTypes) {
             </div>
 
             {/* Controls */}
-            <div className="wavesurfer-controls absolute z-5 top-[43%] left-[43%] {/*border b-4*/} border-color-white border-opacity-20 px-10 py-7 rounded-xl">
-                <button className="w-[30px] h-[30px]" onClick={handlePause}>
-                    {isPlaying ? <BsFillStopFill /> : <BsFillPlayFill />}
+            <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] {/*border b-4*/} border-color-white border-opacity-20 px-10 py-7 rounded-xl">
+                <button className="w-[40px] h-[40px]" onClick={handlePause}>
+                    {isPlaying ? <BsFillStopFill size={24}/> : <BsFillPlayFill size={24}/>}
                 </button>
             </div>
 
