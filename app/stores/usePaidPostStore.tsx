@@ -30,40 +30,35 @@ interface PaidPostStore {
   setPaidPosts: (userId: string) => Promise<void>;
 }
 
-
 export const usePaidPostStore = create<PaidPostStore>()(
   devtools(
     persist(
       (set) => ({
         paidPosts: [],
-        
         setPaidPosts: async (userId: string) => {
           try {
             console.log('Начинаем получение оплаченных постов для пользователя:', userId);
-        
             // Получаем все оплаченные посты пользователя
             const paidPostData = await useGetPaidPostByUserId(userId);
             console.log('Полученные данные из базы cartpaid:', paidPostData);
-        
+
             console.log('Начинаем получение всех постов из базы данных');
             // Получаем все посты из базы данных
             const allPosts = await useGetAllPostsForDownloads();
             console.log('Все посты из базы данных:', allPosts);
-        
+
             // Фильтруем посты, которые есть в списке оплаченных
             console.log('Фильтруем посты, которые есть в списке оплаченных');
-            
             const filteredPosts = allPosts.filter((post) =>
               post && paidPostData.some((paidPost) => {
-                const cartItems = Array.isArray(paidPost.cart_items) ? paidPost.cart_items : [];
-                return cartItems.some((item) => item === post.id);
+                // Преобразуем строку JSON в массив
+                const cartItems = typeof paidPost.cart_items === 'string' ? JSON.parse(paidPost.cart_items) : [];
+                return cartItems.some((item: string) => item === post.id);
               })
             );
-            
-            
-            
+
             console.log('Отфильтрованные посты:', filteredPosts);
-        
+
             // Получаем профили пользователей для каждого поста
             const postsWithProfiles = await Promise.all(
               (filteredPosts.length > 0 ? filteredPosts : allPosts).map(async (post) => {
@@ -79,15 +74,12 @@ export const usePaidPostStore = create<PaidPostStore>()(
                 };
               })
             );
-        
+
             set({ paidPosts: postsWithProfiles as Post[] }); // изменить тип на Post[]
           } catch (error) {
             console.error('Ошибка при получении данных:', error);
           }
         },
-        
-
-
       }),
       {
         name: 'paid-post-store',
@@ -95,4 +87,4 @@ export const usePaidPostStore = create<PaidPostStore>()(
       }
     )
   )
-);
+); 

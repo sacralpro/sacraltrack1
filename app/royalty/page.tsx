@@ -21,12 +21,19 @@ export default function RoyaltyPage() {
     const { createRoyaltyPayment } = useCreateRoyaltyPayment();
     const userContext = useUser();
 
+
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value);
+    setAmount(value >= 0 ? value : 0); // Устанавливаем значение 0, если введено отрицательное число
+  };
     
 
   return (
     <ClientOnly>
 
     <TopNav params={{ id: userContext?.user?.id as string }} />
+
 
 
         <div className="flex justify-left items-center h-screen px-5">
@@ -60,6 +67,7 @@ export default function RoyaltyPage() {
                 <input
                     type="number"
                     value={amount}
+                    
                     onChange={(e) => setAmount(parseFloat(e.target.value))}
                     className="bg-[#272B43] text-white rounded-lg px-4 py-2 w-full focus:outline-none"
                     placeholder="Enter amount"

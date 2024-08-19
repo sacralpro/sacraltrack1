@@ -5,17 +5,17 @@ import Register from '@/app/components/auth/Register'
 import { useState } from "react";
  
 export default function AuthOverlay() {
-    let { setIsLoginOpen } = useGeneralStore()
+    let { setIsLoginOpen } = useGeneralStore() 
 
     let [isRegister, setIsRegister] = useState<boolean>(false)
 
-    return (
+    return ( 
         <>
             <div 
                 id="AuthOverlay" 
-                className=" flex fixed items-center justify-center z-50 top-0 left-0 w-full h-full bg-black bg-opacity-50"
+                className=" flex fixed items-center justify-center z-50 top-0 left-0 w-full h-full bg-black bg-opacity-50 px-[20px]"
             >
-                <div className="relative bg-[#1A1F2B] w-full max-w-[800px] h-[500px] p-2 rounded-2xl">
+                <div className="relative bg-[#1A1F2B] w-full max-w-[800px] mt-5 h-[510px] p-2 rounded-2xl">
 
                     <div className="w-full flex justify-end absolute top-4 right-4">
                         <button onClick={() => setIsLoginOpen(false)} className="p-4 rounded-2xl bg-[#272B43] opacity-90">

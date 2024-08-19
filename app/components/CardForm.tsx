@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import useWithdrawRoyalty from "@/app/hooks/useWithdrawRoyalty";
 import { useUser } from "@/app/context/user";
@@ -24,8 +24,24 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
   const { getRoyaltyBalanceAfterWithdraw } = useGetRoyaltyBalanceAfterWithdraw();
   const [royaltyBalanceAfterWithdraw, setRoyaltyBalanceAfterWithdraw] = useState<number>(0);
 
+const [isFirstWithdrawal, setIsFirstWithdrawal] = useState<boolean>(true);
+
+  useEffect(() => {
+    const checkFirstWithdrawal = async () => {
+      if (user && user.id !== null) {
+        try {
+          const balanceAfterWithdraw = await getRoyaltyBalanceAfterWithdraw(user.id);
+          setRoyaltyBalanceAfterWithdraw(balanceAfterWithdraw);
+          setIsFirstWithdrawal(balanceAfterWithdraw === royaltyBalance);
+        } catch (error) {
+          console.error('Error checking first withdrawal:', error);
+        }
+      }
+    };
+    checkFirstWithdrawal();
+  }, [user, getRoyaltyBalanceAfterWithdraw, royaltyBalance]);
   const handleSubmission = async () => {
-   {/* if (amount < 10) {
+      {/* if (amount < 10) {
       toast.error('Withdrawal is available from $10', {
         duration: 10000,
         style: {
@@ -39,15 +55,11 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
       });
       return;
     } */}
-
     if (cardNumber.trim() === '' || cardExpiry.trim() === '' || firstName.trim() === '' || lastName.trim() === '') {
       toast.error('Please fill in all card details.');
     } else if (user && user.id !== null) {
       try {
-        const balanceAfterWithdraw = await getRoyaltyBalanceAfterWithdraw(user.id);
-        setRoyaltyBalanceAfterWithdraw(balanceAfterWithdraw);
-  
-        if (isNaN(balanceAfterWithdraw) || balanceAfterWithdraw === 0) {
+        if (isFirstWithdrawal) {
           if (amount > royaltyBalance) {
             toast.error('Cannot withdraw an amount greater than the current royalty balance.');
           } else {
@@ -69,28 +81,58 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
             setCardCVC('');
             setFirstName('');
             setLastName('');
+            // Update the isFirstWithdrawal state
+            setIsFirstWithdrawal(false);
           }
-        } else if (amount > balanceAfterWithdraw) {
-          toast.error('Cannot withdraw an amount greater than the balance after withdrawal.');
         } else {
-          await withdrawRoyalty(user.id, cardNumber, firstName + " " + lastName, cardExpiry, amount);
-          toast.success('Thank you, your withdrawal request has been submitted. You will receive your payment within a week.', {
-            duration: 20000,
-            style: {
-              background: '#1A2338',
-              color: '#20DDBB',
-              padding: '16px 24px',
-              borderRadius: '8px',
-              fontSize: '16px',
-              fontWeight: 'bold',
-            },
-          });
-          // Clear form fields
-          setCardNumber('');
-          setCardExpiry('');
-          setCardCVC('');
-          setFirstName('');
-          setLastName('');
+          const balanceAfterWithdraw = await getRoyaltyBalanceAfterWithdraw(user.id);
+          setRoyaltyBalanceAfterWithdraw(balanceAfterWithdraw);
+  
+          if (isNaN(balanceAfterWithdraw) || balanceAfterWithdraw === 0) {
+            if (amount > royaltyBalance) {
+              toast.error('Cannot withdraw an amount greater than the current royalty balance.');
+            } else {
+              await withdrawRoyalty(user.id, cardNumber, firstName + " " + lastName, cardExpiry, amount);
+              toast.success('Thank you, your withdrawal request has been submitted. You will receive your payment within a week.', {
+                duration: 20000,
+                style: {
+                  background: '#1A2338',
+                  color: '#20DDBB',
+                  padding: '16px 24px',
+                  borderRadius: '8px',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                },
+              });
+              // Clear form fields
+              setCardNumber('');
+              setCardExpiry('');
+              setCardCVC('');
+              setFirstName('');
+              setLastName('');
+            }
+          } else if (amount > balanceAfterWithdraw) {
+            toast.error('Cannot withdraw an amount greater than the balance after withdrawal.');
+          } else {
+            await withdrawRoyalty(user.id, cardNumber, firstName + " " + lastName, cardExpiry, amount);
+            toast.success('Thank you, your withdrawal request has been submitted. You will receive your payment within a week.', {
+              duration: 20000,
+              style: {
+                background: '#1A2338',
+                color: '#20DDBB',
+                padding: '16px 24px',
+                borderRadius: '8px',
+                fontSize: '16px',
+                fontWeight: 'bold',
+              },
+            });
+            // Clear form fields
+            setCardNumber('');
+            setCardExpiry('');
+            setCardCVC('');
+            setFirstName('');
+            setLastName('');
+          }
         }
       } catch (error) {
         console.error('Error submitting data:', error);
@@ -100,6 +142,7 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
       toast.error('Unable to retrieve user ID. Please try again later.');
     }
   };
+  
 
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\s/g, '');

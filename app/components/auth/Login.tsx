@@ -68,7 +68,7 @@ export default function Login() {
             <div className="w-full flex justify-center overflow-hidden">
 
                 <div className="w-[440px] flex flex-col justify-center items-center">
-                <h1 className="text-center text-[18px] mb-10 font-bold">Log in</h1>
+                <h1 className="text-center text-[18px] md:mt-0 mt-20 mb-10 font-bold">Log in</h1>
 
                 <div className="px-6 pb-2 w-[100%]">
                     <TextInput 
@@ -108,7 +108,7 @@ export default function Login() {
 
                 {/* IMG */}
                 </div>
-                <div className=" flex flex-col items-center justify-center w-[460px]">
+                <div className=" md:flex hidden flex-col items-center justify-center h-full w-[460px]">
                     <img src="images/login.png" className=" object-contain  rounded-2xl "/>
                 </div>
            

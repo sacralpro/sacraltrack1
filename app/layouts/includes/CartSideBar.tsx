@@ -74,7 +74,7 @@ export const CartSideBar: React.FC<CartSideBarProps> = ({ handlePayClick }) => {
 
         <a
           onClick={handlePayClick}
-          className="px-4 py-3 mb-2 inline-block text-[14px] w-full text-center font-medium text-white bg-[#40C998]  rounded-2xl mt-5 hover:bg-[#25BCA1] cursor-pointer"
+          className="px-4 py-4 mb-2 inline-block text-[14px] w-full text-center font-medium text-white bg-[#40C998]  rounded-2xl mt-5 hover:bg-[#25BCA1] cursor-pointer"
         >
           Pay
         </a>

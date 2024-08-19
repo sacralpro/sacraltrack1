@@ -77,7 +77,7 @@ export default function Register() {
             <div className="w-full flex justify-center overflow-hidden">
 
                 <div className="w-[440px] flex flex-col justify-center items-center">
-                <h1 className="text-center text-[18px] mb-4 font-bold">Sign up</h1>
+                <h1 className="text-center text-[18px] md:mt-0 mt-10 mb-4 font-bold">Sign up</h1>
 
                 <div className="px-6 pb-2 w-[100%]">
 
@@ -138,7 +138,7 @@ export default function Register() {
             </div>
             
 
-            <div className=" flex flex-col items-center justify-center w-[460px]">
+            <div className=" md:flex flex-col items-center hidden justify-center w-[460px]">
                     <img src="images/reg.png" className=" object-contain  rounded-2xl "/>
                 </div>
            
