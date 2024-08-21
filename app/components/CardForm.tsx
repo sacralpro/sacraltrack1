@@ -26,20 +26,24 @@ const CardForm: React.FC<CardFormProps> = ({ onSubmit, amount }) => {
 
 const [isFirstWithdrawal, setIsFirstWithdrawal] = useState<boolean>(true);
 
-  useEffect(() => {
-    const checkFirstWithdrawal = async () => {
-      if (user && user.id !== null) {
-        try {
-          const balanceAfterWithdraw = await getRoyaltyBalanceAfterWithdraw(user.id);
-          setRoyaltyBalanceAfterWithdraw(balanceAfterWithdraw);
-          setIsFirstWithdrawal(balanceAfterWithdraw === royaltyBalance);
-        } catch (error) {
-          console.error('Error checking first withdrawal:', error);
+  
+    useEffect(() => {
+      const checkFirstWithdrawal = async () => {
+        if (user && user.id !== null) {
+          try {
+            const balanceAfterWithdraw = await getRoyaltyBalanceAfterWithdraw(user.id);
+            console.log('Balance after withdraw:', balanceAfterWithdraw);
+            console.log('Current royalty balance:', royaltyBalance);
+            setRoyaltyBalanceAfterWithdraw(balanceAfterWithdraw);
+            setIsFirstWithdrawal(balanceAfterWithdraw === royaltyBalance);
+          } catch (error) {
+            console.error('Error checking first withdrawal:', error);
+          }
         }
-      }
-    };
-    checkFirstWithdrawal();
-  }, [user, getRoyaltyBalanceAfterWithdraw, royaltyBalance]);
+      };
+      checkFirstWithdrawal();
+    }, [user, getRoyaltyBalanceAfterWithdraw, royaltyBalance]);
+    
   const handleSubmission = async () => {
       {/* if (amount < 10) {
       toast.error('Withdrawal is available from $10', {
@@ -191,7 +195,7 @@ const [isFirstWithdrawal, setIsFirstWithdrawal] = useState<boolean>(true);
               value={firstName}
               onChange={handleFirstNameChange}
               className="bg-transparent text-white text-xl font-bold focus:outline-none"
-              placeholder="John"
+              placeholder="Sasha"
             />
           </div>
           <div className="flex-1 bg-[#272B43] rounded-lg p-4 flex flex-col gap-2">
@@ -201,7 +205,7 @@ const [isFirstWithdrawal, setIsFirstWithdrawal] = useState<boolean>(true);
               value={lastName}
               onChange={handleLastNameChange}
               className="bg-transparent text-white text-xl font-bold focus:outline-none"
-              placeholder="Doe"
+              placeholder="Wins"
             />
           </div>
           <div className="bg-[#272B43] rounded-lg p-4 flex flex-col gap-2">
