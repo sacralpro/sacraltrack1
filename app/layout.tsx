@@ -14,8 +14,22 @@ import YandexMetrika from '@/libs/YandexMetrika'
 
 const metadata: Metadata = {
   title: 'Sacral Track',
-  description: 'Sacral Track - music marketplace, social network for music artists and lovers',
-}
+  description: 'Sacral Track - music network marketplace for music artists and lovers',
+  openGraph: {
+    title: 'Sacral Track',
+    description: 'Sacral Track - music network marketplace for music artists and lovers',
+    url: 'https://sacraltrack.store',
+    images: [
+      {
+        url: '/images/login.png',
+        width: 800,
+        height: 600,
+        alt: 'Sacral Track',
+      },
+    ],
+    type: 'website',
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -24,12 +38,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       
         
         <meta name="description" content={metadata.description ?? ''} />
-        <meta property="og:description" content={metadata.description ?? ''} />
-        <meta property="og:image" content="/images/login.png" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sacraltrack.store" />
+        <meta property="og:title" content={String(metadata.openGraph?.title) ?? ''} />
+        <meta property="og:description" content={metadata.openGraph?.description} />
+        <meta property="og:url" content={metadata.openGraph?.url ? String(metadata.openGraph.url) : ''} />
+        <meta property="og:type" content={(metadata.openGraph as any)?.type ?? ''} />
+        <meta property="og:image" content={
+            metadata.openGraph?.images
+              ? Array.isArray(metadata.openGraph.images)
+                ? metadata.openGraph.images.map((image: any) => image?.url ?? '').join(',')
+                : (metadata.openGraph.images as any)?.url ?? ''
+              : ''
+          } />
 
-      
+
+
+
+
 
       </Head>
 

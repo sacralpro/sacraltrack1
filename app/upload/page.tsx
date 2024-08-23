@@ -267,7 +267,7 @@ export default function Upload() {
 
 
                         <div className="mt-6">
-                            <h1 className="text-[20px] mt-[20px] mb-8 font-semibold">Upload track</h1>
+                            <h1 className="text-[20px] mt-[20px] mb-8 font-semibold">Your Sacral Track</h1>
                             {/* <h2 className="text-gray-400 mt-1">Send your track for release</h2> */}
                         </div>
                        

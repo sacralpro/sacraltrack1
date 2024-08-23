@@ -25,7 +25,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
   const addToCartHandler = () => {
     addItemToCart({
       product: post.id,
-      name: post.trackname,
+      name: post.text,
       image: post.image_url,
       audio: post.mp3_url,
       user: post.user_id,

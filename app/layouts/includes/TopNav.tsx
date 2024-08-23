@@ -170,29 +170,29 @@ const handleSearchName = async (event: { target: { value: string } }) => {
 
       const genres: Genre[] = [
         { id: "0", name: "All" },
-        { id: "1", name: "Techno (Peaktime, Romanian, Melodic, Raw, Hypnotic)" },
-        { id: "2", name: "K-pop" },
-        { id: "3", name: "Deep" },
-        { id: "4", name: "Hip-hop" },
-        { id: "5", name: "Meditative" },
-        { id: "6", name: "Electronic" },
-        { id: "7", name: "Rave" },
-        { id: "8", name: "House" },
-        { id: "9", name: "DnB" },
-        { id: "10", name: "Bass" },
-        { id: "11", name: "Minimal" },
-        { id: "12", name: "Lo-fi" },
-        { id: "13", name: "Neurofunk" },
-        { id: "14", name: "Psy" },
-        { id: "15", name: "Trap" },
         { id: "16", name: "Ambient" },
         { id: "17", name: "Acapella" },
         { id: "18", name: "Ai" },
+        { id: "10", name: "Bass" },
+        { id: "9", name: "DnB" },
+        { id: "3", name: "Deep" },
+        { id: "6", name: "Electronic" },
         { id: "19", name: "Films" },
         { id: "20", name: "Games" },
+        { id: "4", name: "Hip-hop" },
         { id: "21", name: "Instrumental" },
-    ];
-    
+        { id: "2", name: "K-pop" },
+        { id: "12", name: "Lo-fi" },
+        { id: "5", name: "Meditative" },
+        { id: "11", name: "Minimal" },
+        { id: "13", name: "Neurofunk" },
+        { id: "14", name: "Psy" },
+        { id: "7", name: "Rave" },
+        { id: "1", name: "Techno (Peaktime, Romanian, Melodic, Raw, Hypnotic)" },
+        { id: "15", name: "Trap" },
+        { id: "8", name: "House" },
+      ];
+      
   
 
     return (
@@ -208,13 +208,25 @@ const handleSearchName = async (event: { target: { value: string } }) => {
 
                     {/* Genres */}
                     <div className="flex items-center justify-content-between">
-                     {pathname === '/' && (
-                    <button className="text-white text-[13px] hover:bg-[#1E2136] hover:px-2 hover:rounded-xl hover:py-2 flex items-center mr-4" onClick={handleGenresClick}>
-                        <img className="w-[14px] h-[14px] mr-2" src="/images/genres.svg"/>
-                        <span className="px-1 py-1 font-medium text-[13px] hidden md:inline">Genres</span>      
-                    </button>
-                     )}
-                    
+                            {pathname === '/' && (
+                                <button
+                                className="text-white text-[13px] flex items-center mr-4"
+                                onClick={handleGenresClick}
+                                onMouseEnter={(e) => {
+                                  
+                                e.currentTarget?.querySelector('img')?.classList.add('rotate-180');
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget?.querySelector('img')?.classList.remove('rotate-180');
+                                }}
+                                >
+                                <img
+                                    className="w-[14px] h-[14px] mr-2 transition-transform duration-300 ease-in-out"
+                                    src="/images/genres.svg"
+                                />
+                                <span className="px-1 py-1 font-medium text-[13px] hidden md:inline">Genres</span>
+                                </button>
+                            )}
                     {showGenresPopup && (
                         <div className="absolute z-10 top-0 right-0 p-2 left-0 mt-[80px]  bg-[#272B43] rounded-2xl shadow-2xl">
                         <ul className=" grid grid-cols-2 gap-2">
@@ -232,13 +244,24 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                     )}
 
                     {/*people*/}
-                    <button 
-                            onClick={() => goToPeople()}
-                            className="flex pl-[15px] pr-[15px] items-center bg-[#] rounded-lg py-[6px] hover:bg-[#] hover:bg-[#1E2136] hover:px-2 hover:rounded-xl hover:py-1"
-                        >
-                            <img className="w-[15px] h-[15px] mr-1" src="/images/people.svg"/>
-                            <span className="px-1 py-2 font-medium text-[13px] hidden md:inline">People</span>
+                    <button
+                    onClick={() => goToPeople()}
+                    className="flex pl-[15px] pr-[15px] items-center bg-[#] rounded-lg py-[6px]"
+                    >
+                    <div
+                        className="flex items-center hover:translate-y-[-2px] transition-transform duration-300 ease-in-out"
+                        onMouseEnter={(e) => {
+                        e.currentTarget?.querySelector('img')?.classList.add('hover:translate-y-[-2px]', 'transition-transform', 'duration-300', 'ease-in-out');
+                        }}
+                        onMouseLeave={(e) => {
+                        e.currentTarget?.querySelector('img')?.classList.remove('hover:translate-y-[-2px]', 'transition-transform', 'duration-300', 'ease-in-out');
+                        }}
+                    >
+                        <img className="w-[15px] h-[15px] mr-1" src="/images/people.svg" />
+                        <span className="px-1 py-2 font-medium text-[13px] hidden md:inline">People</span>
+                    </div>
                     </button>
+
 
                     </div>
 
@@ -332,14 +355,16 @@ const handleSearchName = async (event: { target: { value: string } }) => {
 
                         {!userContext?.user?.id ? (
                             <div className="flex items-center">
-                                <button 
-                                    onClick={() => setIsLoginOpen(true)}
-                                    className="flex items-center bg-[#3E83F7] text-white  rounded-2xl px-3 py-[10px] hover:bg-[#5492FA]"
-                                >
-                                    <span className="whitespace-nowrap mx-4 font-medium text-[14px]">Log in</span>
-                                </button>
-                                <BsThreeDotsVertical color="#161724" size="25"/>
-                            </div>
+                            <button
+                              onClick={() => setIsLoginOpen(true)}
+                              className="flex items-center bg-[#3E83F7] text-white rounded-2xl px-3 py-[10px] hover:bg-[#5492FA]"
+                            >
+                              <span className="whitespace-nowrap mx-4 font-medium text-[14px] md:inline hidden">Log in</span>
+                              <img className="w-[16px] h-[16px] md:hidden m-[3px]" src="/images/Login.svg" alt="Login" />
+                            </button>
+                            <BsThreeDotsVertical color="#161724" size="25" />
+                          </div>
+                          
                         ) : (
                             <div className="flex items-center">
 

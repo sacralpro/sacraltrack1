@@ -69,7 +69,7 @@ export default function RoyaltyPage() {
                     value={amount}
                     
                     onChange={(e) => setAmount(parseFloat(e.target.value))}
-                    className="bg-[#272B43] text-white rounded-lg px-4 py-2 w-full focus:outline-none"
+                    className="bg-[#272B43] text-white rounded-lg px-4 py-3 w-full focus:outline-none"
                     placeholder="Enter amount"
                 /> 
             </div>

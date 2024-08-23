@@ -8,6 +8,7 @@ import { motion, Variants } from 'framer-motion';
 import Preloader from "../components/Preloader"
 //import { RecoilRoot } from "recoil";
 import { useUser } from "@/app/context/user";
+import TechMessage from '../components/TechMessage';
 
 
 
@@ -71,6 +72,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 className=" md:flex justify-end bg-[#15191F] w-[300px] "
             >
     			{/*	<RightSideBar /> */}
+                <TechMessage />
 					</motion.div>
 			</div>
 
