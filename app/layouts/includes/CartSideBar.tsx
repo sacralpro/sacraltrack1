@@ -34,7 +34,7 @@ export const CartSideBar: React.FC<CartSideBarProps> = ({ handlePayClick }) => {
         className={`
           z-20 bg-[#272B43] pt-[10px] h-auto mt-[100px] ml-[20px] overflow-hidden p-[20px] rounded-2xl justify-center
           flex flex-col items-center // Add this line for centering along the y-axis
-          w-[300px] fixed md:right-0 pb-4 mr-[20px] 
+          w-[330px] md:w-[300px] fixed md:right-0 pb-4 mr-[20px] 
         `}
       >
         <section className="py-5 sm:py-7 mt-[20px]">

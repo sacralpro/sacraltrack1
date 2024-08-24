@@ -25,6 +25,8 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
     const [userLiked, setUserLiked] = useState<boolean>(false)
     const [comments, setComments] = useState<Comment[]>([])
     const [likes, setLikes] = useState<Like[]>([])
+    const user = useUser();
+
 
 
 
@@ -163,6 +165,7 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
                     isOpen={isShareModalOpen}
                     onClose={handleCloseShareModal}
                     postId={post.id}
+                    userId={user?.id ?? ''} 
                     trackImageUrl={post.image_url}
                     trackTitle={post.trackname}
                 />

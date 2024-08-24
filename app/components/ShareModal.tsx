@@ -5,6 +5,7 @@ interface ShareModalProps {
   isOpen: boolean;
   onClose: () => void;
   postId: string;
+  userId: string;
   trackImageUrl: string;
   trackTitle: string;
 }
@@ -13,26 +14,27 @@ const ShareModal: React.FC<ShareModalProps> = ({
   isOpen,
   onClose,
   postId,
+  userId,
   trackImageUrl,
   trackTitle,
 }) => {
   const shareOnTelegram = () => {
     const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://sacraltrack.store';
-    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(`${domain}/post/${postId}`)}&text=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&photo=${encodeURIComponent(trackImageUrl.replace('.jpg', '.png'))}`;
+    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(`${domain}/post/${postId}/${userId}`)}&text=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&photo=${encodeURIComponent(trackImageUrl)}`;
     window.open(telegramUrl, '_blank');
     onClose();
   };
 
   const shareOnFacebook = () => {
     const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://sacraltrack.store';
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${domain}/post/${postId}`)}&quote=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&picture=${encodeURIComponent(trackImageUrl)}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${domain}/post/${postId}/${userId}`)}&quote=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&picture=${encodeURIComponent(trackImageUrl)}`;
     window.open(facebookUrl, '_blank');
     onClose();
   };
 
   const shareOnVk = () => {
     const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://sacraltrack.store';
-    const vkUrl = `https://vk.com/share.php?url=${encodeURIComponent(`${domain}/post/${postId}`)}&title=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&image=${encodeURIComponent(trackImageUrl)}`;
+    const vkUrl = `https://vk.com/share.php?url=${encodeURIComponent(`${domain}/post/${postId}/${userId}`)}&title=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&image=${encodeURIComponent(trackImageUrl)}`;
     window.open(vkUrl, '_blank');
     onClose();
   };
@@ -42,7 +44,7 @@ const ShareModal: React.FC<ShareModalProps> = ({
   return (
     <div className="fixed z-50 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen">
-        <div className="bg-[#272B43] rounded-2xl shadow-lg p-6 pb-10 w-full max-w-md relative">
+        <div className="bg-[#272B43] rounded-2xl shadow-lg p-6 pb-10 w-full m-5 max-w-md relative">
           <h2 className="text-white text-lg font-bold mb-4">Share</h2>
           <div className="flex justify-around">
             <button

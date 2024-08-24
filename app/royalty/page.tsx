@@ -81,7 +81,7 @@ export default function RoyaltyPage() {
                       } } />
                  
 
-                <div className="flex-1 absolute top-[100px] right-5 w-[350px] md:max-w-[390px]">
+                <div className="flex-1 absolute top-[100px] right-5 w-[330px] md:max-w-[390px]">
                 <RoyaltyBalanceCard />
 
                 <div className="h-5"></div>

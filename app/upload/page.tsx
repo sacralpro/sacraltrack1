@@ -279,7 +279,7 @@ export default function Upload() {
 
                         {/* TRACK NAME */}
                         <div className="flex items-center align-center">
-                        <div className="mt-4 sm:w-[566px] w-[180px] sm:mr-[20px] mr-5">
+                        <div className="mt-4 sm:w-[566px] w-[168px] sm:mr-[20px] mr-5">
                                 <div className="flex items-center justify-between">
                                 </div>
                                 <input 
@@ -433,7 +433,7 @@ export default function Upload() {
                             {/* <h2 className="text-gray-400 mt-1">Send your track for release</h2> */}
                         </div>
 
-                    <div className="mx-auto mt-5 mb-6  md:w-[728px] w-[350px] h-[180px] text-center p-1 border-2 border-dashed border-[#1E2136] rounded-lg hover:bg-[#1E2136] cursor-pointer">
+                    <div className="mx-auto mt-5 mb-6  md:w-[728px] w-[310px] h-[180px] text-center p-1 border-2 border-dashed border-[#1E2136] rounded-lg hover:bg-[#1E2136] cursor-pointer">
                     {!fileDisplayImage ? (
                         <label
                             htmlFor="fileInputImage"
@@ -443,7 +443,7 @@ export default function Upload() {
                                 flex-col 
                                 items-center 
                                 justify-center 
-                                md:w-[728px] w-[350px]
+                                md:w-[728px] w-[310px]
                                 h-full
                                 text-center 
                                 p-1 
@@ -471,7 +471,7 @@ export default function Upload() {
                                                     flex 
                                                     items-center 
                                                     justify-center 
-                                                    md:w-[728px] w-[350px]
+                                                    md:w-[728px] w-[310px]
                                                     h-full
                                                     p-2
                                                     rounded-2xl
@@ -514,7 +514,7 @@ export default function Upload() {
                             type="text"
                             className="
                                 bg-[#1E2136]
-                                md:w-[728px] w-[350px]
+                                md:w-[728px] w-[310px]
                                 border-[0.5px solid#1E2136]
                                 p-4
                                 rounded-md

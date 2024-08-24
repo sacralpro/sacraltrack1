@@ -188,7 +188,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
         { id: "13", name: "Neurofunk" },
         { id: "14", name: "Psy" },
         { id: "7", name: "Rave" },
-        { id: "1", name: "Techno (Peaktime, Romanian, Melodic, Raw, Hypnotic)" },
+        { id: "1", name: "Techno" },
         { id: "15", name: "Trap" },
         { id: "8", name: "House" },
       ];
@@ -251,14 +251,15 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                     <div
                         className="flex items-center hover:translate-y-[-2px] transition-transform duration-300 ease-in-out"
                         onMouseEnter={(e) => {
-                        e.currentTarget?.querySelector('img')?.classList.add('hover:translate-y-[-2px]', 'transition-transform', 'duration-300', 'ease-in-out');
+                        e.currentTarget?.querySelector('img')?.classList.add('hover:translate-y-[-1px]', 'transition-transform', 'duration-300', 'ease-in-out');
                         }}
                         onMouseLeave={(e) => {
-                        e.currentTarget?.querySelector('img')?.classList.remove('hover:translate-y-[-2px]', 'transition-transform', 'duration-300', 'ease-in-out');
+                        e.currentTarget?.querySelector('img')?.classList.remove('hover:translate-y-[-1px]', 'transition-transform', 'duration-300', 'ease-in-out');
                         }}
                     >
                         <img className="w-[15px] h-[15px] mr-1" src="/images/people.svg" />
                         <span className="px-1 py-2 font-medium text-[13px] hidden md:inline">People</span>
+
                     </div>
                     </button>
 
