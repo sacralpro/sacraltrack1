@@ -88,10 +88,12 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
                         className="fixed bottom-5 right-5 bg-[#272B43] text-white rounded-full w-20 h-20 flex items-center justify-center cursor-pointer hover:bg-[#1E2136] focus:outline-none"
-                    >   <div className="block items-center justify-center">
-                        <img src="/images/tel.svg" className="w-6 h-6" alt="" /> <span className="text-[10px]">Support</span>
+                    >   <div className="flex flex-col items-center">
+                            <img src="/images/tel.svg" className="w-4 h-4 mb-1" alt="" />
+                            <span className="text-[10px]">Support</span>
                         </div>
-                    </motion.a>
+                  
+             </motion.a>
 
 		</div>
 		</>
