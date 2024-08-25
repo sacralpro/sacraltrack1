@@ -15,17 +15,31 @@ import TechMessage from '../components/TechMessage';
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()
     const userContext = useUser();   
+    
 	{/*Preloader*/}
 	const [loading, setLoading] = useState(true);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const login = useUser();
+
 
     useEffect(() => {
-        // Имитация задержки загрузки для демонстрации
         const timeout = setTimeout(() => {
             setLoading(false);
+
+            // Показываем модальное окно, если пользователь не залогинен
+            if (!userContext?.user) {
+                setIsModalVisible(true);
+            }
         }, 1000);
 
         return () => clearTimeout(timeout);
-    }, []);
+    }, [userContext]);
+
+    const closeModal = () => {
+        setIsModalVisible(false);
+    };
+
 
     return (
 		<>
@@ -79,6 +93,32 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 </motion.div>
                 
 			</div>
+
+            {/* Модальное окно для незалогиненных пользователей */}
+            {isModalVisible && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
+                    <div className="bg-[#15191F] p-2 rounded-xl shadow-lg relative md:w-[400px] w-[350px] mx-auto">
+
+                        {/* Кнопка закрытия крестик */}
+                        <button onClick={closeModal} className="absolute top-4 left-5 text-white">
+                            ✕
+                        </button>
+
+                        {/* Изображение сверху */}
+                        <div className="flex justify-center mb-4">
+                            <img src="/images/log.png" alt="Login Prompt" className="w-full h-[150px] rounded-xl" />
+                        </div>
+
+                        {/* Текст сообщения */}
+                        <p className="text-white text-center mb-4 mt-4">To open and listen a tracks, please log in.</p>
+
+                       
+
+                    </div>
+                </div>
+            )}
+
+
 
               {/* Круглая кнопка "Support" */}
               <motion.a
