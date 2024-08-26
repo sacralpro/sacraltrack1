@@ -67,8 +67,8 @@ export const CartSideBar: React.FC<CartSideBarProps> = ({ handlePayClick }) => {
             <span>${taxAmount}</span>
           </li>
           <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
-            <span>Total price: </span>
-            <span>${totalAmount}</span>
+            <span>Total price: </span> 
+            <span>${totalAmount}</span> <div className="w-[2px]"></div>
           </li>
         </ul>
 
