@@ -29,6 +29,7 @@ import { usePostStore } from "@/app/stores/post"
 
 
 
+
  
 
 export default function TopNav({ params }: ProfilePageTypes) {    
@@ -122,7 +123,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
   };
 
   // Debounced search handler
-  const debouncedSearch = debounce(handleSearchName, 500);
+    const debouncedSearch = debounce(handleSearchName, 500);
 
     let [showMenu, setShowMenu] = useState<boolean>(false)
     let { isEditProfileOpen, setIsLoginOpen, setIsEditProfileOpen } = useGeneralStore()
@@ -186,6 +187,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
         { id: "5", name: "Meditative" },
         { id: "11", name: "Minimal" },
         { id: "13", name: "Neurofunk" },
+        { id: "22", name: "Poetry" },
         { id: "14", name: "Psy" },
         { id: "7", name: "Rave" },
         { id: "1", name: "Techno" },
