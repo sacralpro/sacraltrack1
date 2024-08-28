@@ -67,26 +67,18 @@ export default function TermsOfUse() {
           <h2 className="text-xl font-bold mb-2">Introduction.
           </h2>
           <p className="mb-4">
-          Sacral Track is an interactive Web App (social media), a music store for Artists and Music Lovers. This Web App enables you to:
+          Sacral Track is an interactive Web App music social network and marketplace. This Web App enables you to:
 
-          When registering as Artist: 
-          - Upload your tracks to the Service and put them up for sale;
-          - Establish a price for your tracks;
+          - Upload  and sale your tracks on the platform;
           - Familiarize yourself with sales statistics; 
-          - Interact with other users through private messages and comments; (Beta version)
-          - Create Events; (Beta version)
-          - Create Playlists; (Beta version)
+          - Interact with other users through private messages, comments and likes; 
+          - Create Events; 
+          - Create Playlists; 
           - Create Purchase Plans (Carts) and buy tracks from other Artists; 
-          - Upload photos, videos and audio messages. (Beta version)
-
-          When registering as Music Lover:
+          - Upload photos, videos and audio messages.
           - Purchase your favourite music;
-          - Listen to music on the Service without restrictions (320 kbps);
-          - Interact with other users through private messages and comments; (Beta version)
-          - Create Events; (Beta version)
-          - Create Playlists; (Beta version)
-          - Create Purchase Plans (Carts) and buy tracks from other Artists; 
-          - Add Artists and other users to friends (accordingly, monitor their updates). (Beta version)
+          - Listen to music on the platform without restrictions (320 kbps);
+          - Add Artists and other users to friends.
 
           Please read these Terms of Use (hereinafter referred to as the "Agreement") carefully before using the Services offered by Sacral Track. 
           This Agreement sets forth the legally binding terms and conditions for your use of the Site at https://sacraltrack.store, https://sacraltrack.com (hereinafter referred to as the "Site") and the Services owned and operated by the Company, including any mobile software applications offered or published by the Company. By using ST Systems in whatever form and by whatever medium, you agree to be bound by these Terms of Use. These Terms of Use apply to all users of ST Systems, including users, who are the authors of the content (Artists), information and other materials or services incorporated in ST Systems).
@@ -96,7 +88,7 @@ export default function TermsOfUse() {
           <h2 className="text-xl font-bold mb-2">Acceptance of the Terms of Use.
           </h2>
           <p className="mb-4">
-          The right to use ST Systems is granted subject to acceptance, without modification, of all terms and conditions contained in this document (hereinafter referred to as the "Terms of Use"), which also include the Privacy Policy available at http://sacraltrack.store/terms the Copyright Policy available at http://sacraltrack.store/terms, as well as all other rules, policies and amendments that may be published from time to time on the Site by the Company, each of which is incorporated in these Terms of Use by reference. The Company may update it from time to time without any advance notice whatsoever. In addition, some of the services offered by ST Systems may be subject to additional terms and conditions published periodically by the Company; your usage of such services is governed by those additional terms that are incorporated in these Terms of Use through this link (https://sacraltrack.store/terms). 
+          The right to use ST Systems is granted subject to acceptance, without modification, of all terms and conditions contained in this document (hereinafter referred to as the "Terms of Use"), which also include the Privacy Policy available at http://sacraltrack.store/terms the Copyright Policy available at http://sacraltrack.store/terms, as well as all other rules, policies and amendments that may be published from time to time on the Site by the Company, each of which is incorporated in these Terms of Use by reference. The Company may update it from time to time without any advance notice whatsoever. In addition, some of the services offered by ST Systems may be subject to additional terms and conditions published periodically by the Company; your usage of such services is governed by those additional terms that are incorporated in these Terms of Use through this link (https://www.sacraltrack.store/terms). 
 
           </p>
           <h2 className="text-xl font-bold mb-2">Intellectual Property Right and License in Relation to the Company.</h2>
@@ -104,9 +96,7 @@ export default function TermsOfUse() {
           Copyright for the design, database and any other intellectual property, including the Content (computer programs, source and object codes, documentation, software graphics, texts, images, drawings, videos, animations, databases, logos, domain names, trade names, audio tracks) and other existing or future rights related to ST Systems are the property of Sacral Projects, its subsidiaries and Sacral Track project (ST Systems), as well as its affiliates and/or licensors.
           No Content may be copied (reproduced), processed, distributed, displayed in frame, published, downloaded, transferred, sold or otherwise used in whole or in part without the prior written permission of ST Systems or other intellectual property owner indicated on the Site.
 
-          Subject to strict observance of these terms and conditions, ST Systems provides you with the opportunity to purchase, listen and publicly perform tracks purchased on Sacral Track, as well as to use all functional capabilities of ST Systems. It is prohibited to sell tracks purchased on Sacral Track through any third-party resources or to publish these tracks on other labels that do not have partnership agreements with Sacral Track.
-          The use of tracks in videos and any advertising products is possible only with the consent of the Sacral Track licensor. 
-          In order to do that, you can send a written request to the following address: sacraltrack@gmail.com.
+          Subject to strict observance of these terms and conditions, ST Systems provides you with the opportunity to purchase, listen and publicly perform tracks purchased on Sacral Track, as well as to use all functional capabilities of ST Systems. 
 
                     </p>
                     <h2 className="text-xl font-bold mb-2">Terms of Use and Acceptance of the Terms of Use.
@@ -151,7 +141,7 @@ export default function TermsOfUse() {
 
           You bear responsibility for indemnification and protection of the Company against any claims related to the use of your Music on the Service, including all legal expenses.
 
-          Once the A&R Manager accepts the track you have uploaded to the Store, ST Systems automatically becomes the copyright holder of the track. The Artist, in turn, receives a fee in the amount of 50% of the cost of each download of this track.
+          After release your track on the Sacral Track platform ST Systems automatically becomes the copyright holder of the track. The Artist, in turn, receives a fee in the amount of 50% of the cost of each purchased  track.
           This does not apply to the circumstances where the Artist publishes a third party track under his name.
 
           </p>
@@ -170,24 +160,17 @@ export default function TermsOfUse() {
           An exception to the above is when the label (third parties) provides for track publication on other resources with the transfer of full copyright to such resources. 
           In the event that you violate this condition, ST Systems renounces all liability whatsoever.
 
-          *Free listening of tracks in the store available in 192kbps;
+          *Free listening of tracks in the store available in 192-320kbps;
 
           Cover(Artwork).
           Allowed for publication are the Covers that meet the following requirements:
-          - Allowed sizes are 1200x1200px 150dpi. Artwork format: jpg, png, mp4 optimized for web;
-          Should these dimensions be exceeded, the Cover will be automatically reduced.
+          - Allowed artwork format: jpg, png;
+
           - There are no authors/third parties, whose copyright/related rights will be violated as a result of publication and/or use of their content on the Service.
           In the event that you violate this condition, ST Systems renounces all liability whatsoever.
 
           </p>
-          <h2 className="text-xl font-bold mb-2">Publication Period:
-          </h2>
           <p className="mb-4">
-          Subject to the terms of this Agreement, the mandatory publication period of your track on the Site amounts to 4 years. After 4 years have passed, a notification letter will be sent to your e-mail about the expiration of this period, and you can either remove the track from publication or leave it in the Store.
-
-          Once the track has been uploaded and approved by the A&R Manager, the author will be unable to remove the track from ST Systems. The artist has the opportunity to request the Sacral Track team through the Team Support function and ask to remove the track from publication in the Store. This is only possible in cases of copyright infringement.
-
-          The policy needs to be further developed in relation to the possibility/impossibility of deletion of material by the Author..
           </p>
           <h2 className="text-xl font-bold mb-2">Royalty Agreement
           </h2>
@@ -195,13 +178,6 @@ export default function TermsOfUse() {
           By submitting a track to the Store, you agree to the royalty terms established by ST Systems.
           The royalty for a published track amounts to 50% of track price established by the Artist, which implies the cost of each download of such track.
           ST Systems reserves the right to change the royalty percentage at its discretion and at any time with the written notification of the Artist. 
-
-          The Artist is entitled to establish the cost of the track within the limits determined by ST Systems. 
-          ST Systems is entitled to change the limits for the cost of tracks. 
-          ST Systems is entitled to change the cost of the Content established by the User and to assign discounts on Content through the use of promotional codes/promotional offers. In the event that the cost of the track is changed by the A&R Manager, the Artist will be notified by a message and an e-mail.
-
-          Sacral Track may redistribute previously purchased copies of your products at the sole discretion of the Company to users, who received a damaged copy of your product, a version of your product with an incorrect file format, an incomplete copy of your product, or suffered the loss of your product due to a hard disk failure, damage, theft or destruction at no cost to the User (i.e., the user will not be charged a new redistribution fee). 
-          Such a redistribution can be performed by providing the User with the opportunity to independently upload a replacement copy. In the event of any of the above redistributions, no additional payments will be made to you for such redistributions.
 
           </p>
           <h2>Payment Agreement
@@ -216,7 +192,7 @@ export default function TermsOfUse() {
           <p>
           In order to authorize the Company to use your Music in accordance with the above provisions, you grant the Company with a worldwide, non-exclusive, gratuitous, transferable and non-transferable right to use, distribute, reproduce, copy and display trademarks, service marks, slogans, logos or similar property rights (collectively referred to as "Trademarks") solely in connection with the functional capabilities of ST Systems or in the field of marketing, promotion or advertising of the Service, including in all forms of marketing, as well as existing and future advertising materials.
 
-          ST Systems conducts large-scale advertising campaigns to further develop Sacral Track and to attract more users and artists. By accepting these terms, you agree that the personal information you publish on www.sacraltrack.com (tracks, biography, comments, reviews and more) can be used in any of the following marketing components and companies:
+          ST Systems conducts large-scale advertising campaigns to further develop Sacral Track and to attract more users and artists. By accepting these terms, you agree that the personal information you publish on www.sacraltrack.store, www.sacraltrack.com (tracks, biography, comments, reviews and more) can be used in any of the following marketing components and companies:
           - Social media marketing;
           - PR companies;
           - Media productions (audio, video);

@@ -20,7 +20,7 @@ import UploadModal from "@/app/components/UploadModal";
 
 //import { mp3Blob } from '@/app/utils/audioConverter';
 
-const genres = ['Genres', 'Acapella', 'Ai', 'Ambient', 'Bass', 'Deep', 'Deep bass', 'Dubstep', 'DnB', 'Electronic', 'Electro', 'Films', 'Games', 'Hip-hop', 'House', 'Instrumental', 'K-pop', 'Lo-fi', 'Meditative', 'Minimal', 'Neurofunk', 'Poetry', 'Psychedelic', 'Rave', 'Techno', 'Trap']
+const genres = ['Genres', 'Acapella', 'Ai', 'Ambient', 'Bass', 'Deep', 'Deep bass', 'Downtempo', 'Dubstep', 'DnB', 'Electronic', 'Electro', 'Films', 'Games', 'Hip-hop', 'House', 'Instrumental', 'K-pop', 'Lo-fi', 'Meditative', 'Minimal', 'Neurofunk', 'Poetry', 'Psychedelic', 'Rave', 'Techno', 'Trap']
 // Define your list of genres
 
 export default function Upload() {

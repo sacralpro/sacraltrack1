@@ -157,9 +157,9 @@ export default function EditProfileOverlay() {
 
                                             <img className="rounded-full" width="95" src={useCreateBucketUrl(userImage)} />
 
-                                            <button className="absolute bottom-0 right-0 rounded-full bg-[#1E2136] shadow-xl  p-1  inline-block w-[32px] h-[32px]">
+                                            <div className="absolute bottom-0 right-0 rounded-full bg-[#1E2136] shadow-xl  p-1  flex items-center justify-center w-[32px] h-[32px]">
                                                 <BsPencil size="17" className="ml-0.5"/>
-                                            </button>
+                                            </div>
                                         </label>
                                         <input
                                             className="hidden"

@@ -176,6 +176,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
         { id: "18", name: "Ai" },
         { id: "10", name: "Bass" },
         { id: "9", name: "DnB" },
+        { id: "28", name: "Downtempo" },
         { id: "3", name: "Deep" },
         { id: "24", name: "Deep bass" },
         { id: "27", name: "Dubstep" },
