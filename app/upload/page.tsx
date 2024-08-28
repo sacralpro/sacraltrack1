@@ -224,7 +224,7 @@ export default function Upload() {
         try {
             if (fileAudio && imageFile && contextUser && contextUser.user) {
             
-            console.log('в хуке createNewPost, MP3 Blob Size:', mp3Blob.size);  // Должен показать корректный размер до создания File
+            console.log('в hook createNewPost, MP3 Blob Size:', mp3Blob.size);  // Должен показать корректный размер до создания File
         
             const mp3File = new File([mp3Blob], 'converted.mp3', { type: 'audio/mp3' });
 
@@ -541,7 +541,7 @@ export default function Upload() {
                                 </button>
 
                             {/* BUTTON POST */}
-                            <p className="text-[13px] text-[#838383] mt-4">By clicking the "release" button you automatically agree to the <Link href="/terms" className="text-[#018CFD] hover:underline">Sacral Track Terms of use</Link></p>
+                            <p className="text-[13px] text-[#838383] mt-4">By clicking the "release" button you automatically agree with the <Link href="/terms" className="text-[#018CFD] hover:underline">Sacral Track Terms of use</Link></p>
 
                                 <button 
                                     disabled={isUploading}
