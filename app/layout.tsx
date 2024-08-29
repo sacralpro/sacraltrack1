@@ -51,10 +51,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           } />
 
 
-
-
-
-
       </Head>
 
       <body className="bg-[#15191F] text-white">

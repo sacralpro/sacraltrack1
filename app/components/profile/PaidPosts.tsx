@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useCallback, memo } from "react";
 import useGetPaidPostByUserId, { PaidPostData } from '@/app/hooks/useGetPaidPostByUserId';
 import useGetAllPostsForDownloads from '@/app/hooks/useGetAllPostsForDownloads';
 import WaveSurfer from "wavesurfer.js"
@@ -82,61 +82,72 @@ const PaidPosts: React.FC<PaidPostsProps> = ({ userId, posts }) => {
 
   const [wavesurfer, setWaveSurfer] = useState<WaveSurfer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
   useEffect(() => {
-    if (waveformRef.current) {
-      const newWaveSurfer = WaveSurfer.create({
-        container: waveformRef.current,
-        waveColor: "#ffffff",
-        progressColor: "#018CFD",
-        dragToSeek: true,
-        width: "47vw",
-        hideScrollbar: true,
-        normalize: true,
-        barGap: 1,
-        height: 40,
-        barHeight: 20,
-        barRadius: 20,
-        barWidth: 4,
-      });
-
-      paidPosts.forEach((post) => {
-        if (post && post.mp3_url) {
-          newWaveSurfer.load(useCreateBucketUrl(post.mp3_url));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && waveformRef.current) {
+          // Если элемент находится в видимой области экрана
+          const newWaveSurfer = WaveSurfer.create({
+            container: waveformRef.current,
+            waveColor: "#ffffff",
+            progressColor: "#018CFD",
+            dragToSeek: true,
+            width: "47vw",
+            hideScrollbar: true,
+            normalize: true,
+            barGap: 1,
+            height: 40,
+            barHeight: 20,
+            barRadius: 20,
+            barWidth: 4,
+          });
+  
+          paidPosts.forEach((post) => {
+            if (post && post.mp3_url) {
+              newWaveSurfer.load(useCreateBucketUrl(post.mp3_url));
+            }
+          });
+  
+          setWaveSurfer(newWaveSurfer);
+  
+          newWaveSurfer.on("finish", () => {
+            console.log("Песня закончилась");
+          });
+  
+          newWaveSurfer.on("ready", () => {
+            console.log("Волновая форма готова");
+          });
+        } else {
+          // Если элемент находится за пределами видимой области экрана
+          if (wavesurfer) {
+            wavesurfer.destroy();
+            setWaveSurfer(null);
+          }
         }
-      });
-
-      setWaveSurfer(newWaveSurfer);
-
-      newWaveSurfer.on("finish", () => {
-        console.log("song finished");
-      });
-
-      newWaveSurfer.on("ready", () => {
-        console.log("Waveform is ready");
-      });
-    }
-
+      },
+      { threshold: 0.1 }
+    );
+  
+    waveformRef.current && observer.observe(waveformRef.current);
+  
     return () => {
-      if (wavesurfer) {
-        wavesurfer.destroy();
-      }
+      observer.disconnect();
     };
   }, [paidPosts]);
   
-  {/* WaveSurfer PlayPause */}
-      // Update handlePause function to toggle the state
-      const handlePause = () => {
-        if (wavesurfer) {
-            if (isPlaying) {
-                wavesurfer.stop();
-                setIsPlaying(false);
-            } else {
-                wavesurfer.playPause();
-                setIsPlaying(true);
-            }
-        }
-      };
+  
+  // WaveSurfer PlayPause
+  const handlePause = useCallback(() => {
+    if (wavesurfer) {
+      if (isPlaying) {
+        wavesurfer.stop();
+        setIsPlaying(false);
+      } else {
+        wavesurfer.playPause();
+        setIsPlaying(true);
+      }
+    }
+  }, [isPlaying, wavesurfer]);
 
   
     

@@ -9,7 +9,7 @@ const TechMessage: React.FC = () => {
 
   return (
     isVisible && (
-      <div className="bg-[#1A2338] fixed rounded-2xl w-full max-w-[300px] p-6 text-white  h-[500px] mt-[100px]">
+      <div className="bg-[#1E2136] fixed rounded-2xl w-full shadow-2xl max-w-[300px] p-6 text-white  h-[500px] mt-[100px]">
         <button
           className="absolute top-4 right-4 text-[#838383] hover:text-white transition-colors duration-300"
           onClick={handleClose}
@@ -47,7 +47,7 @@ const TechMessage: React.FC = () => {
         <p className="mb-4 text-sm">
           We are still working on fixing bugs and improving the application. Thank you for your trust and for using our platform.
         </p>
-        <p className="text-[#20DDBB] font-bold text-sm">Enjoy the music! ST Team</p>
+        <p className="text-[#ffffff] font-bold text-sm">Enjoy the music! ST Team</p>
       </div>
     )
   );

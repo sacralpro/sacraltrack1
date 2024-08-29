@@ -42,6 +42,9 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
+    "react-intersection-observer": "^9.13.0",
+    "react-lazy-load-image-component": "^1.6.2",
+    "react-loading-skeleton": "^3.4.0",
     "react-modern-audio-player": "^1.4.0-rc.2",
     "react-native-credit-card-input": "^1.0.0",
     "react-native-credit-card-input-plus": "^0.4.8",
@@ -57,6 +60,7 @@
   },
   "devDependencies": {
     "@types/debounce": "^1.2.1",
+    "@types/react-lazy-load-image-component": "^1.6.4",
     "@types/react-router-dom": "^5.3.3",
     "@types/uuid": "^9.0.8",
     "canvas": "^2.11.2",

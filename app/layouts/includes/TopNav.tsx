@@ -171,6 +171,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
 
       const genres: Genre[] = [
         { id: "0", name: "All" },
+        { id: "29", name: "Afro house" },
         { id: "16", name: "Ambient" },
         { id: "17", name: "Acapella" },
         { id: "18", name: "Ai" },

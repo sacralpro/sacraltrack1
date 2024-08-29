@@ -228,7 +228,7 @@ const Cart: React.FC<{ post: PostMainCompTypes | null }> = ({ post = null }) => 
                             backgroundImage: `url(${useCreateBucketUrl(cartItem.image)})`
                         }}
                     >
-                        <div className="bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[54px] flex items-between rounded-xl pt-0.5">
+                        <div className="bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[54px] flex items-center rounded-xl">
                             <div className="cursor-pointer">
                              {/*   <img className="rounded-[15px] max-h-[50px] w-[50px]" src={useCreateBucketUrl(post?.profile?.image)} /> */}
                             </div>
@@ -250,7 +250,7 @@ const Cart: React.FC<{ post: PostMainCompTypes | null }> = ({ post = null }) => 
                                 <p className="text-[14px] pb-0.5 break-words md:max-w-[400px] max-w-[240px]">{post?.trackname}</p>
                             </div>
 
-                            <p className="font-semibold not-italic mt-3">
+                            <p className="font-semibold not-italic mt-0">
                                 ${cartItem.price * cartItem.quantity}
                             </p>
 

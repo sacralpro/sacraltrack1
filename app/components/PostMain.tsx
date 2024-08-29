@@ -1,28 +1,26 @@
-
 "use client";
 
-import Link from "next/link"
-import PostMainLikes from "./PostMainLikes"
-import React from "react";
-import { useEffect, useRef, useState } from "react"
-import useCreateBucketUrl from "../hooks/useCreateBucketUrl"
-import { PostWithProfile, Product, PostMainCompTypes } from "../types"
+import Link from "next/link";
+import PostMainLikes from "./PostMainLikes";
+import React, { useEffect, useRef, useState, useCallback, useContext, memo } from "react";
+import useCreateBucketUrl from "../hooks/useCreateBucketUrl";
+import { PostWithProfile, PostMainCompTypes } from "../types";
 import { usePathname } from "next/navigation";
-import WaveSurfer from "wavesurfer.js"
-import { BsFillStopFill, BsFillPlayFill, BsSkipForward, BsSkipBackward } from "react-icons/bs";
-import toast from 'react-hot-toast';
-import CartContext from "../context/CartContext"
-import { useContext } from "react";
+import WaveSurfer from "wavesurfer.js";
+import { BsFillStopFill, BsFillPlayFill } from "react-icons/bs";
+import toast from "react-hot-toast";
+import CartContext from "../context/CartContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-export default function PostMain({ post }: PostMainCompTypes) {
+const PostMain = memo(({ post }: PostMainCompTypes) => {
+  const pathname = usePathname();
 
-    const pathname = usePathname();
- 
-    {/*Add to cart */}
-    
-    const { addItemToCart } = useContext(CartContext);
+  // Add to cart
+  const { addItemToCart } = useContext(CartContext);
 
-  const addToCartHandler = () => {
+  const addToCartHandler = useCallback(() => {
     addItemToCart({
       product: post.id,
       name: post.text,
@@ -33,145 +31,221 @@ export default function PostMain({ post }: PostMainCompTypes) {
     });
     console.log("added to cart");
     toast.success("Added to cart");
-  };
+  }, [addItemToCart, post]);
+
+  // WaveSurfer
+  const [isPlaying, setIsPlaying] = useState(false);
+  const waveformRef = useRef<HTMLDivElement>(null);
+  const [wavesurfer, setWaveSurfer] = useState<WaveSurfer | null>(null);
+  useEffect(() => {
+    if (waveformRef.current) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Если элемент находится в видимой области экрана
+              const newWaveSurfer = WaveSurfer.create({
+                container: waveformRef.current as HTMLElement,
+                waveColor: "#ffffff",
+                progressColor: "#018CFD",
+                dragToSeek: true,
+                width: "47vw",
+                hideScrollbar: true,
+                normalize: true,
+                barGap: 1,
+                height: 40,
+                barHeight: 20,
+                barRadius: 20,
+                barWidth: 4,
+              });
   
-    {/* WaveSurfer */}
-
-    const [isPlaying, setIsPlaying] = useState(false);
-
-    const waveformRef = useRef<HTMLDivElement>(null);
-    const [wavesurfer, setWaveSurfer] = useState<WaveSurfer | null>(null);
+              newWaveSurfer.load(useCreateBucketUrl(post?.mp3_url));
+              setWaveSurfer(newWaveSurfer);
   
-    useEffect(() => {
-        if (waveformRef.current) {
-          const newWaveSurfer = WaveSurfer.create({
-            container: waveformRef.current,
-            waveColor: "#ffffff",
-            progressColor: "#018CFD",
-            dragToSeek: true,
-            width: "47vw",
-            hideScrollbar: true,
-            normalize: true,
-            barGap: 1,
-            height: 40,
-            barHeight: 20,
-            barRadius: 20,
-            barWidth: 4,
-          });
-      
-          newWaveSurfer.load(useCreateBucketUrl(post?.mp3_url));
-          setWaveSurfer(newWaveSurfer);
-      
-          newWaveSurfer.on("finish", () => {
-            console.log("song finished");
-          });
-      
-          newWaveSurfer.on("ready", () => {
-            console.log("Waveform is ready");
-          });
-        }
-
-        
-        return () => {
-          if (wavesurfer) {
-            wavesurfer.destroy();
-          }
-        };
-      }, []);
-    
-    {/* WaveSurfer PlayPause */}
-        // Update handlePause function to toggle the state
-        const handlePause = () => {
-          if (wavesurfer) {
-              if (isPlaying) {
-                  wavesurfer.stop();
-                  setIsPlaying(false);
-              } else {
-                  wavesurfer.playPause();
-                  setIsPlaying(true);
+              newWaveSurfer.on("finish", () => {
+                console.log("Песня закончилась");
+              });
+  
+              newWaveSurfer.on("ready", () => {
+                console.log("Волновая форма готова");
+              });
+            } else {
+              // Если элемент находится за пределами видимой области экрана
+              if (wavesurfer) {
+                wavesurfer.destroy();
+                setWaveSurfer(null);
               }
-          }
-        };
+            }
+          });
+        },
+        {
+          rootMargin: "0px",
+          threshold: 0.5,
+        }
+      );
+  
+      observer.observe(waveformRef.current);
+  
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, [post?.mp3_url]);
+  
+  const handlePause = useCallback(() => {
+    if (wavesurfer) {
+      if (isPlaying) {
+        wavesurfer.stop();
+        setIsPlaying(false);
+      } else {
+        wavesurfer.playPause();
+        setIsPlaying(true);
+      }
+    }
+  }, [isPlaying, wavesurfer]);
 
+  
 
-    return (
-      <>
-      <div
-        id={`PostMain-${post.id}`}
-        style={{
-          backgroundImage: `url(${useCreateBucketUrl(post?.image_url)})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-        className={`relative flex flex-col justify-between p-2 mt-5 mb-5 mx-5 
-          object-cover rounded-[20px] h-[500px] overflow-hidden w-[350px]
-          ${pathname === '/' ? ' lg:w-[700px]' : 'w-full lg:w-[500px]'}`}
-      >
+  return (
+    <div
+      id={`PostMain-${post.id}`}
+      style={{
+        backgroundImage: `url(${useCreateBucketUrl(post?.image_url)})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className={`relative flex flex-col justify-between p-2 mt-5 mb-5 mx-5 
+        object-cover rounded-[20px] h-[500px] overflow-hidden 
+        ${pathname === "/" ? " lg:w-[700px]" : "w-full lg:w-[500px]"}`}
+    >
+      {post ? (
+        <>
           <div className="flex justify-between">
-
-    
-
             {/* Profile Image */}
             <div className="cursor-pointer">
-                <img className="rounded-[15px] max-h-[50px] w-[50px]" src={useCreateBucketUrl(post?.profile?.image)} />
+              <LazyLoadImage
+                className="rounded-[15px] max-h-[50px] w-[50px]"
+                src={useCreateBucketUrl(post?.profile?.image)}
+                alt="Profile"
+                loading="lazy"
+                effect="blur"
+              />
             </div>
 
             {/* Name / Trackname */}
-            <div className=" bg-[#272B43]/95 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[50px] flex items-between rounded-xl ml-2">
-                <div className="pl-3 w-full px-2">
-                    <div className="flex items-center justify-between">
-                        <Link className="text-[#818BAC] size-[15px]" href={`/profile/${post.profile.user_id}`}>
-                            <span className="font-bold hover:underline cursor-pointer">
-                                {post.profile.name}
-                            </span>
-                        </Link>
-                    </div>
-                    <p className="text-[14px] pb-0.5 break-words md:max-w-[400px] max-w-[300px]">{post.text}</p>
+            <div className="bg-[#272B43]/95 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[50px] flex items-between rounded-xl ml-2">
+              <div className="pl-3 w-full px-2">
+                <div className="flex items-center justify-between">
+                  <Link
+                    className="text-[#818BAC] size-[15px]"
+                    href={`/profile/${post.profile.user_id}`}
+                  >
+                    <span className="font-bold hover:underline cursor-pointer">
+                      {post.profile.name}
+                    </span>
+                  </Link>
                 </div>
+                <p className="text-[14px] pb-0.5 break-words md:max-w-[400px] max-w-[300px]">
+                  {post.text}
+                </p>
+              </div>
             </div>
+          </div>
+
+          {/* Genre Tag */}
+          <div className="absolute top-16 left-16 py-1 px-2 bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] flex items-center rounded-lg">
+            <p className="text-[13px] text-[#818BAC] hover:text-white cursor-pointer ">
+              {post.genre}
+            </p>
+          </div>
+
+          {/* Audio Controls */}
+          <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] border-color-white border-opacity-20 px-10 py-7 rounded-xl">
+            <button className="w-[40px] h-[40px]" onClick={handlePause}>
+              {isPlaying ? (
+                <BsFillStopFill size={24} />
+              ) : (
+                <BsFillPlayFill size={24} />
+              )}
+            </button>
+          </div>
+
+          {/* Audio Waveform */}
+          <div className="flex overflow-hidden mt-80 absolute h-[40px] mb-10 w-full">
+            <div>
+              <div ref={waveformRef} className="wavesurfer-container" />
             </div>
+          </div>
 
-            {/* Tag */}
+          {/* Interaction Buttons */}
+          <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
+            <PostMainLikes post={post} />
+          </div>
 
-             {/* Genre */}
-            <div className="absolute top-16 left-16 py-1 px-2 bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] flex items-center rounded-lg">
-            <p className="text-[13px] text-[#818BAC] hover:text-white cursor-pointer ">{post.genre}</p>
-            </div>
-
-            {/* Controls */}
-            <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] {/*border b-4*/} border-color-white border-opacity-20 px-10 py-7 rounded-xl">
-                <button className="w-[40px] h-[40px]" onClick={handlePause}>
-                    {isPlaying ? <BsFillStopFill size={24}/> : <BsFillPlayFill size={24}/>}
-                </button>
-            </div>
-
-            {/* Audio */}
-            <div className="flex overflow-hidden mt-80 absolute h-[40px] mb-10 w-full">
-                <div style={{  }}>
-                    <div ref={waveformRef} className="wavesurfer-container" />
-                </div>
-            </div>
-
-            {/* comments slider */}
-
-            {/* Buttons like comments share */}
-            <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
-                <PostMainLikes post={post} />
-            </div>
-
-            {/* Add to cart */}
-            <div className="absolute right-2 align-middle top-[30%]">
-                <section>
-                <button onClick={addToCartHandler} className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-[12px]">
-                        <img src="/images/cart.svg" alt="sacraltrack cart" />
-                    </button>
-                    <div className="w-auto flex item-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]">
-                        $ {post.price}
-                    </div>
-                </section>
-            </div>
-        </div>
-      
+          {/* Add to Cart Button */}
+          <div className="absolute right-2 align-middle top-[30%]">
+            <section>
+              <button
+                onClick={addToCartHandler}
+                className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-[12px]"
+              >
+                <img src="/images/cart.svg" alt="sacraltrack cart" />
+              </button>
+              <div className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]">
+                $ {post.price}
+              </div>
+              </section>
+          </div>
         </>
-    )
-}
+      ) : (
+        <div className="flex flex-col justify-between p-2 mt-5 mb-5 mx-5 object-cover rounded-[20px] h-[500px] overflow-hidden">
+          <div className="flex justify-between">
+            <div className="cursor-pointer">
+              <Skeleton
+                className="rounded-[15px] max-h-[50px] w-[50px]"
+                height={50}
+                width={50}
+              />
+            </div>
+            <div className="bg-[#272B43]/95 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[50px] flex items-between rounded-xl ml-2">
+              <div className="pl-3 w-full px-2">
+                <div className="flex items-center justify-between">
+                  <Skeleton className="text-[#818BAC] size-[15px]" width={100} />
+                </div>
+                <Skeleton className="text-[14px] pb-0.5" width={200} />
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute top-16 left-16 py-1 px-2 bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] flex items-center rounded-lg">
+            <Skeleton className="text-[13px] text-[#818BAC]" width={80} />
+          </div>
+
+          <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] border-color-white border-opacity-20 px-10 py-7 rounded-xl">
+            <Skeleton className="w-[40px] h-[40px]" />
+          </div>
+
+          <div className="flex overflow-hidden mt-80 absolute h-[40px] mb-10 w-full">
+            <div>
+              <Skeleton className="wavesurfer-container" height={40} />
+            </div>
+          </div>
+
+          <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
+            <Skeleton className="w-full h-[60px]" />
+          </div>
+
+          <div className="absolute right-2 align-middle top-[30%]">
+            <section>
+              <Skeleton className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-[12px]" height={60} />
+              <Skeleton className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]" height={40} />
+            </section>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+});
+
+export default PostMain;
+

@@ -20,7 +20,7 @@ import UploadModal from "@/app/components/UploadModal";
 
 //import { mp3Blob } from '@/app/utils/audioConverter';
 
-const genres = ['Genres', 'Acapella', 'Ai', 'Ambient', 'Bass', 'Deep', 'Deep bass', 'Downtempo', 'Dubstep', 'DnB', 'Electronic', 'Electro', 'Films', 'Games', 'Hip-hop', 'House', 'Instrumental', 'K-pop', 'Lo-fi', 'Meditative', 'Minimal', 'Neurofunk', 'Poetry', 'Psychedelic', 'Rave', 'Techno', 'Trap']
+const genres = ['Genres', 'Afro house', 'Acapella', 'Ai', 'Ambient', 'Bass', 'Deep', 'Deep bass', 'Downtempo', 'Dubstep', 'DnB', 'Electronic', 'Electro', 'Films', 'Games', 'Hip-hop', 'House', 'Instrumental', 'K-pop', 'Lo-fi', 'Meditative', 'Minimal', 'Neurofunk', 'Poetry', 'Psychedelic', 'Rave', 'Techno', 'Trap']
 // Define your list of genres
 
 export default function Upload() {
@@ -306,7 +306,7 @@ export default function Upload() {
                             {/* CHOOSE GENRE ----------------------- */}
 
 
-                            <select className="bg-[#1E2136] justify-center w-[130px] md:w-[142px] sm:border-[0.5px solid#1E2136] p-4 rounded-xl h-[52px] px-4 mt-4" value={genre} onChange={handleGenreChange}>
+                            <select className="bg-[#1E2136] justify-center w-[120px] md:w-[142px] sm:border-[0.5px solid#1E2136] p-4 rounded-xl h-[52px] px-4 mt-4" value={genre} onChange={handleGenreChange}>
 
                                 {genres.map(genre => (
                                     <option key={genre} value={genre}>{genre}</option>
