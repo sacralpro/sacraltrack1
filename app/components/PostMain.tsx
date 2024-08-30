@@ -165,7 +165,7 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
       }}
       className="relative flex flex-col justify-between p-2 mt-5 mb-5 
         object-cover rounded-[20px] h-[500px] overflow-hidden 
-        md:w-[700px] w-[314px] mx-auto"
+        md:w-[700px] w-[318px] mx-auto"
     >
       {post ? (
         <>

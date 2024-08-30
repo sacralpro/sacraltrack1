@@ -22,6 +22,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 const PostUser = memo(({ post, params }: PostUserCompTypes) => {
   const router = useRouter();
   const contextUser = useUser();
+  const user = useUser();
+
 
   // DELETE POST
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
@@ -158,6 +160,7 @@ const PostUser = memo(({ post, params }: PostUserCompTypes) => {
             </div>
           </div>
 
+          {user?.id === post.profile.user_id && (
           <button disabled={isDeleting} onClick={handleDeletePost}>
             <img
               src="/images/del.svg"
@@ -165,6 +168,7 @@ const PostUser = memo(({ post, params }: PostUserCompTypes) => {
               className="w-[18px] h-[18px] cursor-pointer opacity-80 hover:opacity-100 rounded-full mr-5"
             />
           </button>
+        )}
         </div>
 
         {/* Controls */}

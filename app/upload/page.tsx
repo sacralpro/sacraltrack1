@@ -280,7 +280,7 @@ export default function Upload() {
 
                         {/* TRACK NAME */}
                         <div className="flex items-center align-center">
-                        <div className="mt-4 sm:w-[566px] w-[168px] sm:mr-[20px] mr-5">
+                        <div className="mt-4 sm:w-[566px] w-[170px] sm:mr-[20px] mr-5">
                                 <div className="flex items-center justify-between">
                                 </div>
                                 <input 
@@ -297,7 +297,7 @@ export default function Upload() {
                                     placeholder="Track Name" 
                                     value={trackname}
                                     onChange={event => setTrackname(event.target.value)}
-                                    style={{fontSize: '13px', color: '#ffff'}}
+                                    style={{fontSize: '14px', color: '#ffff'}}
                                     //'::placeholder': {fontSize: '12px', color: '#7B7B8C'}}} // Размер и цвет плейсхолдера
 
                                 />
@@ -306,7 +306,7 @@ export default function Upload() {
                             {/* CHOOSE GENRE ----------------------- */}
 
 
-                            <select className="bg-[#1E2136] justify-center w-[120px] md:w-[142px] sm:border-[0.5px solid#1E2136] p-4 rounded-xl h-[52px] px-4 mt-4" value={genre} onChange={handleGenreChange}>
+                            <select className="bg-[#1E2136] text-[14px] justify-center w-[120px] md:w-[142px] sm:border-[0.5px solid#1E2136] p-4 rounded-xl h-[52px] px-4 mt-4" value={genre} onChange={handleGenreChange}>
 
                                 {genres.map(genre => (
                                     <option key={genre} value={genre}>{genre}</option>
@@ -434,7 +434,7 @@ export default function Upload() {
                             {/* <h2 className="text-gray-400 mt-1">Send your track for release</h2> */}
                         </div>
 
-                    <div className="mx-auto mt-5 mb-6  md:w-[728px] w-[310px] h-[180px] text-center p-1 border-2 border-dashed border-[#1E2136] rounded-lg hover:bg-[#1E2136] cursor-pointer">
+                    <div className="mx-auto mt-5 mb-6  md:w-[728px] w-[310px] h-[180px] text-center p-1 border-2 border-dashed border-[#1E2136] rounded-2xl hover:bg-[#1E2136] cursor-pointer">
                     {!fileDisplayImage ? (
                         <label
                             htmlFor="fileInputImage"
@@ -518,7 +518,7 @@ export default function Upload() {
                                 md:w-[728px] w-[310px]
                                 border-[0.5px solid#1E2136]
                                 p-4
-                                rounded-md
+                                rounded-2xl
                                 focus:outline-none
                                 mt-5
                                 placeholder:text-[12px] placeholder:text-[#7B7B8C]
