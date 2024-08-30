@@ -193,7 +193,7 @@ export default function Upload() {
             setError({ type: 'File', message: 'An audio file is required' });
             isError = true;
         } else if (!caption) {
-            setError({ type: 'caption', message: 'A caption is required' });
+            setError({ type: 'caption', message: 'A description is required' });
             isError = true;
         } else if (!trackname) {
             setError({ type: 'trackname', message: 'A trackname is required' });

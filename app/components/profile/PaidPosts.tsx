@@ -205,7 +205,7 @@ const PaidPosts: React.FC<PaidPostsProps> = ({ userId, posts }) => {
          {/* Controls */}
          <div className="wavesurfer-controls absolute z-5 top-[43%] left-[43%] {/*border b-4*/} border-color-white border-opacity-20 px-10 py-7 rounded-xl">
                 <button onClick={handlePause}>
-                    {isPlaying ? <BsFillStopFill /> : <BsFillPlayFill />}
+                    {isPlaying ? <BsFillStopFill size={24} /> : <BsFillPlayFill size={24} />}
                 </button>
             </div>
 

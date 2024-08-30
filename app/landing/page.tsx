@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="font-['Gotham Pro']">
+    <div className="min-h-screen">
       {/* Header */}
-      <header className="flex justify-between items-center p-4 bg-gray-900 text-white">
+      <header className="flex justify-between items-center p-4 text-white">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -44,18 +44,88 @@ const LandingPage: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
+         {/* Бегущая строка */}
+      <section className="text-white w-full overflow-hidden">
+        <div className="div-run1">
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK
+        </div>
+        <div className="div-run2">
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK <img
+            src="/images/st.png"
+            alt="SACRAL TRACK"
+            className="inline-block h-16 mr-4 rotate-90"
+          />
+          SACRAL TRACK
+        </div>
+        
+      </section>
 
-              {/* Бегущая строка */}
-      <div className="bg-gray-900 text-white py-2 overflow-x-hidden whitespace-nowrap">
-        <motion.div
-          animate={{ x: "-100%" }}
-          transition={{ duration: 10, repeat: Infinity, linear: true }}
-          className="inline-block"
-        >
-          SACRAL TRACK (IMG)  SACRAL TRACK (IMG)  SACRAL TRACK (IMG)  SACRAL TRACK (IMG)
-        </motion.div>
-      </div>
-      
+
           <h1 className="text-4xl font-bold mb-4">Heading 1</h1>
           <h2 className="text-2xl font-bold mb-4">Heading 2</h2>
           <h3 className="text-2xl font-bold mb-4">Heading 3</h3>

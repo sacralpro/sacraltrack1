@@ -128,7 +128,7 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
                 src={useCreateBucketUrl(post?.profile?.image)}
                 alt="Profile"
                 loading="lazy"
-                effect="blur"
+
               />
             </div>
   
@@ -181,20 +181,18 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
           <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
             <PostMainLikes post={post} />
           </div>
-  
-          {/* Add to Cart Button */}
+        
+        {/* Add to Cart Button */}
           <div className="absolute right-2 align-middle top-[30%]">
-            <section>
               <button
                 onClick={addToCartHandler}
-                className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-[12px]"
+                className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-xl"
               >
                 <img src="/images/cart.svg" alt="sacraltrack cart" />
               </button>
-              <div className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]">
+              <div className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-xl">
                 ${post.price}
               </div>
-            </section>
           </div>
         </>
       ) : (
