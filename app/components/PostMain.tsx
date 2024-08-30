@@ -15,7 +15,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 interface MyWaveSurfer extends WaveSurfer {
-  off: (event: string, callback: () => void) => void;
+  destroy: () => void;
 }
 
 
@@ -119,9 +119,7 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
       wavesurfer.on("finish", finishHandler);
 
       return () => {
-        wavesurfer.off("play", playHandler);
-        wavesurfer.off("pause", pauseHandler);
-        wavesurfer.off("finish", finishHandler);
+       
       };
     }
   }, [wavesurfer]);

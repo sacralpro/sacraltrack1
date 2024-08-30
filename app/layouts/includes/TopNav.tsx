@@ -228,7 +228,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                                 }}
                                 >
                                 <img
-                                    className="w-[14px] h-[14px] mr-2 transition-transform duration-300 ease-in-out"
+                                    className="w-[15px] h-[15px] mr-2 transition-transform duration-300 ease-in-out"
                                     src="/images/genres.svg"
                                 />
                                 <span className="px-1 py-1 font-medium text-[13px] hidden md:inline">Genres</span>
