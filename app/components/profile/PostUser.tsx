@@ -160,7 +160,7 @@ const PostUser = memo(({ post, params }: PostUserCompTypes) => {
             </div>
           </div>
 
-          {user?.id === post.profile.user_id && (
+          {user?.id === post?.profile?.user_id && (
           <button disabled={isDeleting} onClick={handleDeletePost}>
             <img
               src="/images/del.svg"
