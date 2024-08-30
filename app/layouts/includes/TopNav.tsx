@@ -208,7 +208,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                 <div className={`flex items-center justify-between gap-6 w-full pl-5 pr-2 mx-auto ${pathname === '/' ? 'max-w-full' : ''}`}>
 
                     <Link href="/" className="flex items-center">
-                        <img className="min-w-[20px] w-[20px] mr-2" src="/images/st.png"/>
+                        <img className="min-w-[20px] w-[20px] mr-0 md:mr-2" src="/images/st.png"/>
                         <span className="px-1 py-1 font-medium text-[13px] hidden md:inline">Sacral Track</span>   
                     </Link>
                     
@@ -217,7 +217,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                     <div className="flex items-center justify-content-between">
                             {pathname === '/' && (
                                 <button
-                                className="text-white text-[13px] flex items-center mr-4"
+                                className="text-white text-[13px] flex items-center mr-0 md:mr-4"
                                 onClick={handleGenresClick}
                                 onMouseEnter={(e) => {
                                   

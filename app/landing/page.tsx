@@ -34,6 +34,9 @@ const LandingPage: React.FC = () => {
       </header>
 
       {/* Section 1 */}
+
+
+
       <section className="bg-gray-900 text-white py-16 px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -41,6 +44,18 @@ const LandingPage: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
+
+              {/* Бегущая строка */}
+      <div className="bg-gray-900 text-white py-2 overflow-x-hidden whitespace-nowrap">
+        <motion.div
+          animate={{ x: "-100%" }}
+          transition={{ duration: 10, repeat: Infinity, linear: true }}
+          className="inline-block"
+        >
+          SACRAL TRACK (IMG)  SACRAL TRACK (IMG)  SACRAL TRACK (IMG)  SACRAL TRACK (IMG)
+        </motion.div>
+      </div>
+      
           <h1 className="text-4xl font-bold mb-4">Heading 1</h1>
           <h2 className="text-2xl font-bold mb-4">Heading 2</h2>
           <h3 className="text-2xl font-bold mb-4">Heading 3</h3>
