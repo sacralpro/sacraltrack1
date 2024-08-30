@@ -183,7 +183,7 @@ import {
 
                         ) : null} 
 
-                         <div className="bg-black bg-opacity-70 lg:min-w-[480px] z-10 relative">
+                         <div className="lg:min-w-[480px] z-10 relative">
                             {postById?.mp3_url ? (
                                  <div className="flex overflow-hidden h-[40px] mb-16 w-full">
                                     <div style={{  }}>

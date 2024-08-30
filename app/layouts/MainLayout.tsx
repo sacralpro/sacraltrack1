@@ -66,7 +66,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 				</motion.div>
 			</div>
 
-			<div className="flex justify-center bg-[#15191F] sm:w-full  px-0">
+			<div className="flex justify-center bg-[#15191F] w-full  px-0">
 			<motion.div
                 initial={{ opacity: 0, y: -100 }}
                 animate={{ opacity: 1, y: 0 }}

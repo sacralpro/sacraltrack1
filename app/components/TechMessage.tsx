@@ -16,7 +16,7 @@ const TechMessage: React.FC = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-4 w-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -30,7 +30,7 @@ const TechMessage: React.FC = () => {
           </svg>
         </button>
         <h2 className="text-2xl font-bold mb-4">Dear User,</h2>
-        <p className="mb-4 text-sm">
+        <p className="mb-4 text-sm font-normal">
           We are excited to announce that our platform is now open in a testing mode. The basic functionality is working, including:
         </p>
         <ul className="list-disc pl-6 mb-4 text-sm">

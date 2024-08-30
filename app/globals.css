@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Подключение шрифта Gotham Pro */
+@font-face {
+    font-family: 'Gotham Pro';
+    src: url('/fonts/GothamPro.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  
+
+
+  
+  /* Применение шрифта Gotham Pro */
+  body {
+    font-family: 'Gotham Pro', sans-serif;
+  }
+  

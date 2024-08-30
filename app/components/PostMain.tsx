@@ -37,6 +37,7 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const waveformRef = useRef<HTMLDivElement>(null);
   const [wavesurfer, setWaveSurfer] = useState<WaveSurfer | null>(null);
+  
   useEffect(() => {
     if (waveformRef.current) {
       const observer = new IntersectionObserver(
@@ -105,7 +106,6 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
   }, [isPlaying, wavesurfer]);
 
   
-
   return (
     <div
       id={`PostMain-${post.id}`}
@@ -114,9 +114,9 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className={`relative flex flex-col justify-between p-2 mt-5 mb-5 mx-5 
+      className="relative flex flex-col justify-between p-2 mt-5 mb-5 
         object-cover rounded-[20px] h-[500px] overflow-hidden 
-        ${pathname === "/" ? " lg:w-[700px]" : "w-full lg:w-[500px]"}`}
+        md:w-[700px] w-[350px] mx-auto"
     >
       {post ? (
         <>
@@ -131,13 +131,13 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
                 effect="blur"
               />
             </div>
-
+  
             {/* Name / Trackname */}
             <div className="bg-[#272B43]/95 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[50px] flex items-between rounded-xl ml-2">
               <div className="pl-3 w-full px-2">
                 <div className="flex items-center justify-between">
                   <Link
-                    className="text-[#818BAC] size-[15px]"
+                    className="text-[#818BAC] text-[15px]"
                     href={`/profile/${post.profile.user_id}`}
                   >
                     <span className="font-bold hover:underline cursor-pointer">
@@ -151,14 +151,14 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
               </div>
             </div>
           </div>
-
+  
           {/* Genre Tag */}
           <div className="absolute top-16 left-16 py-1 px-2 bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] flex items-center rounded-lg">
             <p className="text-[13px] text-[#818BAC] hover:text-white cursor-pointer ">
               {post.genre}
             </p>
           </div>
-
+  
           {/* Audio Controls */}
           <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] border-color-white border-opacity-20 px-10 py-7 rounded-xl">
             <button className="w-[40px] h-[40px]" onClick={handlePause}>
@@ -169,19 +169,19 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
               )}
             </button>
           </div>
-
+  
           {/* Audio Waveform */}
           <div className="flex overflow-hidden mt-80 absolute h-[40px] mb-10 w-full">
             <div>
               <div ref={waveformRef} className="wavesurfer-container" />
             </div>
           </div>
-
+  
           {/* Interaction Buttons */}
           <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
             <PostMainLikes post={post} />
           </div>
-
+  
           {/* Add to Cart Button */}
           <div className="absolute right-2 align-middle top-[30%]">
             <section>
@@ -192,60 +192,61 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
                 <img src="/images/cart.svg" alt="sacraltrack cart" />
               </button>
               <div className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]">
-                $ {post.price}
+                ${post.price}
               </div>
-              </section>
+            </section>
           </div>
         </>
       ) : (
-        <div className="flex flex-col justify-between p-2 mt-5 mb-5 mx-5 object-cover rounded-[20px] h-[500px] overflow-hidden">
+        <div className="flex flex-col justify-between p-2 mt-5 mb-5 object-cover rounded-[20px] h-[500px] overflow-hidden">
           <div className="flex justify-between">
             <div className="cursor-pointer">
               <Skeleton
-                className="rounded-[15px] max-h-[50px] w-[50px]"
-                height={50}
-                width={50}
-              />
-            </div>
-            <div className="bg-[#272B43]/95 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[50px] flex items-between rounded-xl ml-2">
-              <div className="pl-3 w-full px-2">
-                <div className="flex items-center justify-between">
-                  <Skeleton className="text-[#818BAC] size-[15px]" width={100} />
-                </div>
-                <Skeleton className="text-[14px] pb-0.5" width={200} />
+              className="rounded-[15px] max-h-[50px] w-[50px]"
+              height={50}
+              width={50}
+            />
+          </div>
+          <div className="bg-[#272B43]/95 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[50px] flex items-between rounded-xl ml-2">
+            <div className="pl-3 w-full px-2">
+              <div className="flex items-center justify-between">
+                <Skeleton className="text-[#818BAC] size-[15px]" width={100} />
               </div>
+              <Skeleton className="text-[14px] pb-0.5" width={200} />
             </div>
-          </div>
-
-          <div className="absolute top-16 left-16 py-1 px-2 bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] flex items-center rounded-lg">
-            <Skeleton className="text-[13px] text-[#818BAC]" width={80} />
-          </div>
-
-          <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] border-color-white border-opacity-20 px-10 py-7 rounded-xl">
-            <Skeleton className="w-[40px] h-[40px]" />
-          </div>
-
-          <div className="flex overflow-hidden mt-80 absolute h-[40px] mb-10 w-full">
-            <div>
-              <Skeleton className="wavesurfer-container" height={40} />
-            </div>
-          </div>
-
-          <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
-            <Skeleton className="w-full h-[60px]" />
-          </div>
-
-          <div className="absolute right-2 align-middle top-[30%]">
-            <section>
-              <Skeleton className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-[12px]" height={60} />
-              <Skeleton className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]" height={40} />
-            </section>
           </div>
         </div>
-      )}
-    </div>
-  );
+
+        <div className="absolute top-16 left-16 py-1 px-2 bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] flex items-center rounded-lg">
+          <Skeleton className="text-[13px] text-[#818BAC]" width={80} />
+        </div>
+
+        <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] border-color-white border-opacity-20 px-10 py-7 rounded-xl">
+          <Skeleton className="w-[40px] h-[40px]" />
+        </div>
+
+        <div className="flex overflow-hidden mt-80 absolute h-[40px] mb-10 w-full">
+          <div>
+            <Skeleton className="wavesurfer-container" height={40} />
+          </div>
+        </div>
+
+        <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
+          <Skeleton className="w-full h-[60px]" />
+        </div>
+
+        <div className="absolute right-2 align-middle top-[30%]">
+          <section>
+            <Skeleton className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-[12px]" height={60} />
+            <Skeleton className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]" height={40} />
+          </section>
+        </div>
+      </div>
+    )}
+  </div>
+);
+  
 });
 
-export default PostMain;
 
+export default PostMain;

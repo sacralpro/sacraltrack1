@@ -21,7 +21,7 @@ const metadata: Metadata = {
     url: 'https://sacraltrack.store',
     images: [
       {
-        url: '/images/login.png',
+        url: '/images/log.png',
         width: 800,
         height: 600,
         alt: 'Sacral Track',
