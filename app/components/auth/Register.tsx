@@ -95,7 +95,7 @@ export default function Register() {
 
                     <TextInput 
                         string={email}
-                        placeholder="Email address"
+                        placeholder="Email"
                         onUpdate={setEmail}
                         inputType="email"
                         error={showError('email')}
@@ -128,7 +128,7 @@ export default function Register() {
                         disabled={loading}
                         onClick={() => register()} 
                         className={`
-                            flex items-center justify-center w-full text-[14px] font-semibold text-white py-6 rounded-xl
+                            flex items-center justify-center w-full text-[14px] font-semibold text-white py-6 rounded-2xl
                             ${(!name || !email || !password || !confirmPassword) ? 'bg-[#40C998]' : 'bg-[#F02C56]'}
                         `}
                     >

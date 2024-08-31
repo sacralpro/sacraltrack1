@@ -126,6 +126,10 @@ const PostUser = memo(({ post, params }: PostUserCompTypes) => {
       }
     }
   }, [isPlaying, wavesurfer]);
+
+  console.log("contextUser?.user?.id:", contextUser?.user?.id);
+  console.log("post?.profile?.user_id:", post?.profile?.user_id);
+
   
 
   return (
@@ -160,7 +164,7 @@ const PostUser = memo(({ post, params }: PostUserCompTypes) => {
             </div>
           </div>
 
-          {user?.id === post?.profile?.user_id && (
+          {post && post.profile && contextUser?.user?.id === post.profile.user_id && (
           <button disabled={isDeleting} onClick={handleDeletePost}>
             <img
               src="/images/del.svg"

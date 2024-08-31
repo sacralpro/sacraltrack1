@@ -73,7 +73,7 @@ export default function Login() {
                 <div className="px-6 pb-2 w-[100%]">
                     <TextInput 
                         string={email}
-                        placeholder="Email address"
+                        placeholder="Email"
                         onUpdate={setEmail}
                         inputType="email"
                         error={showError('email')}

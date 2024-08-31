@@ -14,7 +14,7 @@ import YandexMetrika from '@/libs/YandexMetrika'
 
 const metadata: Metadata = {
   title: 'Sacral Track',
-  description: 'Sacral Track - music network marketplace for music artists and lovers',
+  description: 'Sacral Track - music network marketplace for music artists and lovers. Listen to music, release a tracks, withdraw royalties to visa/mastercard.',
   openGraph: {
     title: 'Sacral Track',
     description: 'Sacral Track - music network marketplace for music artists and lovers',

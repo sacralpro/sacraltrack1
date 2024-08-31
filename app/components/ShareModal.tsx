@@ -67,7 +67,7 @@ const ShareModal: React.FC<ShareModalProps> = ({
             </button>
           </div>
           <button
-            className="absolute top-0 right-0 m-4 bg-[#1E2136] hover:bg-[#0f101a] text-white font-bold py-2 px-4 rounded-xl focus:outline-none"
+            className="absolute top-0 right-0 m-4 bg-[#1E2136] hover:bg-[#0f101a] text-white font-bold py-3 px-4 rounded-xl focus:outline-none"
             onClick={onClose}
           >
             <img src='/images/close.svg' alt="close" />

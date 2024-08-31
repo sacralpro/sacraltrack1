@@ -110,7 +110,14 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                         </div>
 
                         {/* Текст сообщения */}
-                        <p className="text-white text-center mb-4 mt-4">To open and listen a tracks, please log in.</p>
+                        <p className="text-white text-center mb-4 mt-4">
+                            Sacral Track - music network marketplace <br />
+                            for music artists and lovers. <br /><br />
+                            For All: Listen music for free, likes, comments, share. <br /><br />
+                            For Artists: Release a track, withdraw royalties to visa/mastercard. <br /><br />
+                            <span className='text-[#20DDBB]'>To open and listen a tracks, please log in.</span>
+                            </p>
+
 
                        
 

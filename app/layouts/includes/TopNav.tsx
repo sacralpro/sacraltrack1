@@ -354,7 +354,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                         onClick={() => goToCart()}
                         className="md:w-[86px] w-[44px] bg-[#1A2338] rounded-2xl h-[44px] flex items-center justify-end">
                             <span className="font-medium text-[12px] hidden md:inline">{cartItems?.length || 0}</span>
-                            <div className="md:ml-2 ml-0 h-[40px] w-[50px] bg-[#20DDBB] flex items-center justify-center rounded-2xl right-0 hover:bg-[#21C3A6]">
+                            <div className="md:ml-2 ml-0 h-[43px] w-[50px] bg-[#20DDBB] flex items-center justify-center rounded-2xl right-0 hover:bg-[#21C3A6]">
                                 <img src="/images/cart.svg" alt="cart" />
                             </div>
                         </button>

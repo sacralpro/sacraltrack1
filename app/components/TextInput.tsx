@@ -12,13 +12,12 @@ export default function TextInput({ string, inputType, placeholder, error, onUpd
                 bg-[#272B43]
                 text-[white]
                 text-[13px]
-                border
-                border-[#8A5A9C]
-                border-0.2px
+
                 rounded-2xl
-                py-2.5
+                py-4
                 px-3
                 focus:outline-none
+                focus:bg-[#2b2f4b]
             " 
             value={string || ''}
             onChange={(event) => onUpdate(event.target.value)}
