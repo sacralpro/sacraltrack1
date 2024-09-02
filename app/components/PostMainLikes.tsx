@@ -161,13 +161,13 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
                         </div>
                 </div>
 
-                <ShareModal
+               <ShareModal
                     isOpen={isShareModalOpen}
                     onClose={handleCloseShareModal}
                     postId={post.id}
-                    userId={user?.id ?? ''} 
-                    trackImageUrl={post.image_url}
-                    trackTitle={post.trackname}
+                    userId={post.user_id}
+                    trackTitle={post.text}
+                    post={post}
                 />
         </>
     )

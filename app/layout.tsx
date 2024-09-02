@@ -37,18 +37,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Head>
       
         
-        <meta name="description" content={metadata.description ?? ''} />
         <meta property="og:title" content={String(metadata.openGraph?.title) ?? ''} />
         <meta property="og:description" content={metadata.openGraph?.description} />
         <meta property="og:url" content={metadata.openGraph?.url ? String(metadata.openGraph.url) : ''} />
         <meta property="og:type" content={(metadata.openGraph as any)?.type ?? ''} />
-        <meta property="og:image" content={
-            metadata.openGraph?.images
-              ? Array.isArray(metadata.openGraph.images)
-                ? metadata.openGraph.images.map((image: any) => image?.url ?? '').join(',')
-                : (metadata.openGraph.images as any)?.url ?? ''
-              : ''
-          } />
+        <meta property="og:image" content={metadata.openGraph?.images ? Array.isArray(metadata.openGraph.images) ? metadata.openGraph.images.map((image: any) => image?.url ?? '').join(',') : (metadata.openGraph.images as any)?.url ?? '' : ''} />
+
 
 
       </Head>
