@@ -14,7 +14,7 @@ export default function UploadLayout({ children }: { children: React.ReactNode }
 			<div className="">
             <TopNav params={{ id: userContext?.user?.id as string }} />
 
-                <div className="flex justify-between mx-auto w-full px-2">
+                <div className="flex justify-between mx-auto w-full">
                     {children}
                 </div>
             </div>

@@ -26,7 +26,7 @@ const UploadModal: React.FC<UploadModalProps> = ({ onClose }) => {
             className="absolute top-0 right-0 m-4 bg-[#1E2136] hover:bg-[#0f101a] text-white font-bold py-2 px-4 rounded-xl focus:outline-none"
             onClick={onClose}
           >
-            <img src='/images/close.svg' alt="close" />
+            <img src='/images/close.svg' alt="close" style={{width: '14px', height: '14px'}} />
           </button>
         </div>
       </div>

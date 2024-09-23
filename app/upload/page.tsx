@@ -423,7 +423,7 @@ export default function Upload() {
                     {/* POPUP ----------------------- */}
                     
                         {showPopup && (
-                        <div id="popupOverlay" className="top-0 popup-overlay absolute z-5 bg-[#161726] px-5 z-10 py-[160px] w-full h-screen flex-col justify-center items-center ">
+                        <div id="popupOverlay" className="top-0 popup-overlay absolute z-5 bg-[#15191F] px-5 z-10 py-[160px] w-full h-screen flex-col justify-center items-center ">
                             <div className="popup-content">
                             <div className="flex flex-col items-center justify-center h-full w-full shadow-lg rounded-md py-6 md:px-10 px-5">
                             <div className="mt-1 mb-4">

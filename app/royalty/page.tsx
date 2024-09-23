@@ -37,7 +37,7 @@ export default function RoyaltyPage() {
 
 
         <div className="flex justify-left items-center h-screen px-5">
-            <div className="bg-[#1A2338] md:mt-[388px] mt-[710px] rounded-2xl p-8 w-full max-w-[800px] flex flex-col md:flex-row gap-8">
+            <div className="bg-[#1A2338] md:mt-[380px] mt-[710px] rounded-2xl p-8 w-full max-w-[800px] flex flex-col md:flex-row gap-8">
                 <div className="flex-1">
                 <h2 className="text-2xl font-bold mb-4 text-white">Withdraw Royalty</h2>
                 <div className="mb-4">
