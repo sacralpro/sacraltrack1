@@ -75,7 +75,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
       if (profileResults && trackResults) {
         const formattedTrackResults: Post[] = trackResults.map((track) => ({
             id: track.id,
-            name: track.name,
+            name: track.name, // Используйте track.trackname как name
             image: track.image,
             user_id: '',
             audio_url: '', // Добавьте свойство audio_url здесь
@@ -194,6 +194,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
         { id: "13", name: "Neurofunk" },
         { id: "22", name: "Poetry" },
         { id: "14", name: "Psy" },
+        { id: "23", name: "Rap" },
         { id: "7", name: "Rave" },
         { id: "1", name: "Techno" },
         { id: "15", name: "Trap" },

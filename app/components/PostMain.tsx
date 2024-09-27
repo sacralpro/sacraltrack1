@@ -235,65 +235,65 @@ const PostMain = memo(({ post }: PostMainCompTypes) => {
 
           {/* Add to Cart Button */}
           <div className="absolute right-2 align-middle top-[30%]">
-  <button
-    onClick={addToCartHandler}
-    className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-xl"
-  >
-    <img src="/images/cart.svg" alt="sacraltrack cart" />
-  </button>
-  <div className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-xl">
-    ${post.price}
-  </div>
-</div>
-</>
-) : (
-<div className="flex flex-col justify-between p-2 mt-5 mb-5 object-cover rounded-[20px] h-[500px] overflow-hidden">
-  <div className="flex justify-between">
-    <div className="cursor-pointer">
-      <Skeleton
-        className="rounded-[15px] max-h-[50px] w-[50px]"
-        height={50}
-        width={50}
-      />
-    </div>
-    <div className="bg-[#272B43]/95 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[50px] flex items-between rounded-xl ml-2">
-      <div className="pl-3 w-full px-2">
-        <div className="flex items-center justify-between">
-          <Skeleton className="text-[#818BAC] size-[15px]" width={100} />
+          <button
+            onClick={addToCartHandler}
+            className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-xl"
+          >
+            <img src="/images/cart.svg" alt="sacraltrack cart" />
+          </button>
+          <div className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-xl">
+            ${post.price}
+          </div>
         </div>
-        <Skeleton className="text-[14px] pb-0.5" width={200} />
+        </>
+        ) : (
+        <div className="flex flex-col justify-between p-2 mt-5 mb-5 object-cover rounded-[20px] h-[500px] overflow-hidden">
+          <div className="flex justify-between">
+            <div className="cursor-pointer">
+              <Skeleton
+                className="rounded-[15px] max-h-[50px] w-[50px]"
+                height={50}
+                width={50}
+              />
+            </div>
+            <div className="bg-[#272B43]/95 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] w-full h-[50px] flex items-between rounded-xl ml-2">
+              <div className="pl-3 w-full px-2">
+                <div className="flex items-center justify-between">
+                  <Skeleton className="text-[#818BAC] size-[15px]" width={100} />
+                </div>
+                <Skeleton className="text-[14px] pb-0.5" width={200} />
+              </div>
+            </div>
+          </div>
+
+        <div className="absolute top-16 left-16 py-1 px-2 bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] flex items-center rounded-lg">
+          <Skeleton className="text-[13px] text-[#818BAC]" width={80} />
+        </div>
+
+        <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] border-color-white border-opacity-20 px-10 py-7 rounded-xl">
+          <Skeleton className="w-[40px] h-[40px]" />
+        </div>
+
+        <div className="flex overflow-hidden mt-80 absolute h-[40px] mb-10 w-full">
+          <div>
+            <Skeleton className="wavesurfer-container" height={40} />
+          </div>
+        </div>
+
+        <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
+          <Skeleton className="w-full h-[60px]" />
+        </div>
+
+        <div className="absolute right-2 align-middle top-[30%]">
+          <section>
+            <Skeleton className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-[12px]" height={60} />
+            <Skeleton className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]" height={40} />
+          </section>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div className="absolute top-16 left-16 py-1 px-2 bg-[#272B43]/90 shadow-[0px_5px_5px_-10px_rgba(0,0,0,0.5)] flex items-center rounded-lg">
-    <Skeleton className="text-[13px] text-[#818BAC]" width={80} />
-  </div>
-
-  <div className="wavesurfer-controls absolute z-5 top-[40%] left-[43%] border-color-white border-opacity-20 px-10 py-7 rounded-xl">
-    <Skeleton className="w-[40px] h-[40px]" />
-  </div>
-
-  <div className="flex overflow-hidden mt-80 absolute h-[40px] mb-10 w-full">
-    <div>
-      <Skeleton className="wavesurfer-container" height={40} />
-    </div>
-  </div>
-
-  <div className="absolute w-full h-[60px] bottom-1 justify-between pr-4">
-    <Skeleton className="w-full h-[60px]" />
-  </div>
-
-  <div className="absolute right-2 align-middle top-[30%]">
-    <section>
-      <Skeleton className="py-12 px-4 bg-[#20DDBB] text-white rounded-t-[12px]" height={60} />
-      <Skeleton className="w-auto flex items-center justify-center py-2 px-2 bg-[#21C3A6] text-white text-size-[12px] rounded-b-[12px]" height={40} />
-    </section>
-  </div>
-</div>
-)}
-</div>
-);
-});
+      )}
+      </div>
+      );
+      });
 
 export default PostMain;

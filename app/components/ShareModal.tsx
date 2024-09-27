@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaTelegram, FaFacebook, FaVk } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaCopy } from 'react-icons/fa';
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -16,34 +16,21 @@ const ShareModal: React.FC<ShareModalProps> = ({
   postId,
   userId,
   trackTitle,
-  post,
 }) => {
-  
-  const shareOnTelegram = () => {
-    const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://sacraltrack.store';
-    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(`${domain}/post/${postId}/${userId}`)}&text=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&photo=${encodeURIComponent(post.image_url || '')}`;
-    console.log('Telegram URL:', telegramUrl); // Лог для проверки URL
-    window.open(telegramUrl, '_blank');
-    onClose();
+  const [copySuccess, setCopySuccess] = useState('');
+
+  const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://sacraltrack.store';
+  const shareUrl = `${domain}/post/${postId}/${userId}`;
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopySuccess('Copied!');
+    } catch (err) {
+      setCopySuccess('Error');
+      console.error('Error copying text: ', err);
+    }
   };
-  
-  const shareOnFacebook = () => {
-    const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://sacraltrack.store';
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${domain}/post/${postId}/${userId}`)}&quote=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&picture=${encodeURIComponent(post.image_url || '')}`;
-    console.log('Facebook URL:', facebookUrl); // Лог для проверки URL
-    window.open(facebookUrl, '_blank');
-    onClose();
-  };
-  
-  const shareOnVk = () => {
-    const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://sacraltrack.store';
-    const vkUrl = `https://vk.com/share.php?url=${encodeURIComponent(`${domain}/post/${postId}/${userId}`)}&title=${encodeURIComponent(`Listen to new exclusive track: "${trackTitle}" on Sacral Track`)}&image=${encodeURIComponent(post.image_url || '')}`;
-    console.log('VK URL:', vkUrl); // Лог для проверки URL
-    window.open(vkUrl, '_blank');
-    onClose();
-  };
-  
-  
 
   if (!isOpen) return null;
 
@@ -52,32 +39,28 @@ const ShareModal: React.FC<ShareModalProps> = ({
       <div className="flex items-center justify-center min-h-screen">
         <div className="bg-[#272B43] rounded-2xl p-6 pb-10 w-[318px] md:w-full m-5 max-w-md relative shadow-lg">
           <h2 className="text-white text-lg font-bold mb-8">Share</h2>
-          <div className="flex justify-around">
-            <button
-              className="text-white hover:text-gray-300 focus:outline-none"
-              onClick={shareOnTelegram}
-            >
-              <FaTelegram size={32} />
-            </button>
-            <button
-              className="text-white hover:text-gray-300 focus:outline-none"
-              onClick={shareOnFacebook}
-            >
-              <FaFacebook size={32} />
-            </button>
-            <button
-              className="text-white hover:text-gray-300 focus:outline-none"
-              onClick={shareOnVk}
-            >
-              <FaVk size={32} />
-            </button>
+          <div className="flex flex-col items-center">
+            <div className="relative w-full">
+              <input
+                type="text"
+                value={shareUrl}
+                readOnly
+                className="bg-[#181a27] text-white rounded-xl p-2 w-full text-center pr-10 py-3"
+              />
+              <button
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-700 hover:text-black"
+                onClick={copyToClipboard}
+              >
+                <FaCopy size={24} />
+              </button>
+            </div>
+            {copySuccess && <p className="text-white mt-8">{copySuccess}</p>}
           </div>
-        
           <button
             className="absolute top-0 right-0 m-4 hover:bg-[#1e2036] text-white font-bold py-3 px-3 rounded-xl focus:outline-none"
             onClick={onClose}
           >
-            <img src='/images/close.svg' alt="close" />
+            <img src='/images/close.svg' alt="close" style={{width: '12px', height: '12px'}}/>
           </button>
         </div>
       </div>
