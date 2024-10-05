@@ -40,118 +40,117 @@ export default function TopNav({ params }: ProfilePageTypes) {
     const { cart } = useContext(CartContext);
     const cartItems = cart?.cartItems;
 
-
-   {/*SEARCH*/}
+    {/*SEARCH*/}
    
    const { searchTracksByName } = usePostStore();
    const [searchProfiles, setSearchProfiles] = useState<(RandomUsers | Post)[]>([]);
 
     // Debounce function
-  function debounce(func: Function, wait: number) {
-    let timeout: number;
-    return function executedFunction(...args: any[]) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = window.setTimeout(later, wait);
-    };
-  }
+        function debounce(func: Function, wait: number) {
+            let timeout: number;
+            return function executedFunction(...args: any[]) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = window.setTimeout(later, wait);
+            };
+        }
 
-// Define the handleSearchName function
-const handleSearchName = async (event: { target: { value: string } }) => {
-    if (event.target.value === "") {
-      setSearchProfiles([]);
-      return;
-    }
-  
-    try {
-      const [profileResults, trackResults] = await Promise.all([
-        useSearchProfilesByName(event.target.value), // Assuming this function returns an array of RandomUsers
-        searchTracksByName(event.target.value), // Assuming this function returns an array of Post
-      ]);
-  
-      if (profileResults && trackResults) {
-        const formattedTrackResults: Post[] = trackResults.map((track) => ({
-            id: track.id,
-            name: track.name, // Используйте track.trackname как name
-            image: track.image,
-            user_id: '',
-            audio_url: '', // Добавьте свойство audio_url здесь
-            image_url: '', // Добавьте свойство image_url здесь
-            text: '', // Добавьте свойство text здесь
-            created_at: '', // Добавьте свойство created_at здесь
-            trackname: '', // Добавьте свойство trackname здесь
-            genre: '', // Добавьте свойство genre здесь
-            price: '', // Добавьте свойство price здесь
-            type: '', // Добавьте свойство type здесь
-            mp3_url: '', // Добавьте свойство mp3_url здесь
-            profile: {
-              user_id: '', // Добавьте свойство user_id здесь
-              name: '', // Добавьте свойство name здесь
-              image: '', // Добавьте свойство image здесь
-            },
-          }));
-          
-  
-          const combinedResults: (RandomUsers | Post)[] = [
-            ...profileResults.map((profile) => ({
-              id: profile.id,
-              name: profile.name,
-              image: profile.image,
-              type: 'someType', // Добавьте свойство type для RandomUsers
-              profile: {
-                user_id: 'userId', // Добавьте свойство user_id для RandomUsers
-                name: 'userName', // Добавьте свойство name для RandomUsers
-                image: 'userImage', // Добавьте свойство image для RandomUsers
-              },
-            })),
-            ...formattedTrackResults, // Предполагается, что formattedTrackResults уже имеет тип Post[]
-          ];
-  
-        setSearchProfiles(combinedResults);
-      } else {
-        setSearchProfiles([]);
-      }
-  
-    } catch (error) {
-      console.log(error);
-      setSearchProfiles([]);
-      alert(error);
-    }
-  };
+        // Define the handleSearchName function
+        const handleSearchName = async (event: { target: { value: string } }) => {
+            if (event.target.value === "") {
+            setSearchProfiles([]);
+            return;
+            }
+        
+            try {
+            const [profileResults, trackResults] = await Promise.all([
+                useSearchProfilesByName(event.target.value), // Assuming this function returns an array of RandomUsers
+                searchTracksByName(event.target.value), // Assuming this function returns an array of Post
+            ]);
+        
+            if (profileResults && trackResults) {
+                const formattedTrackResults: Post[] = trackResults.map((track) => ({
+                    id: track.id,
+                    name: track.name, // Используйте track.trackname как name
+                    image: track.image,
+                    user_id: '',
+                    audio_url: '', // Добавьте свойство audio_url здесь
+                    image_url: '', // Добавьте свойство image_url здесь
+                    text: '', // Добавьте свойство text здесь
+                    created_at: '', // Добавьте свойство created_at здесь
+                    trackname: '', // Добавьте свойство trackname здесь
+                    genre: '', // Добавьте свойство genre здесь
+                    price: '', // Добавьте свойство price здесь
+                    type: '', // Добавьте свойство type здесь
+                    mp3_url: '', // Добавьте свойство mp3_url здесь
+                    profile: {
+                    user_id: '', // Добавьте свойство user_id здесь
+                    name: '', // Добавьте свойство name здесь
+                    image: '', // Добавьте свойство image здесь
+                    },
+                }));
+                
+        
+                const combinedResults: (RandomUsers | Post)[] = [
+                    ...profileResults.map((profile) => ({
+                    id: profile.id,
+                    name: profile.name,
+                    image: profile.image,
+                    type: 'someType', // Добавьте свойство type для RandomUsers
+                    profile: {
+                        user_id: 'userId', // Добавьте свойство user_id для RandomUsers
+                        name: 'userName', // Добавьте свойство name для RandomUsers
+                        image: 'userImage', // Добавьте свойство image для RandomUsers
+                    },
+                    })),
+                    ...formattedTrackResults, // Предполагается, что formattedTrackResults уже имеет тип Post[]
+                ];
+        
+                setSearchProfiles(combinedResults);
+            } else {
+                setSearchProfiles([]);
+            }
+        
+            } catch (error) {
+            console.log(error);
+            setSearchProfiles([]);
+            alert(error);
+            }
+        };
 
-  // Debounced search handler
-    const debouncedSearch = debounce(handleSearchName, 500);
+        // Debounced search handler
+            const debouncedSearch = debounce(handleSearchName, 500);
 
-    let [showMenu, setShowMenu] = useState<boolean>(false)
-    let { isEditProfileOpen, setIsLoginOpen, setIsEditProfileOpen } = useGeneralStore()
-    let { setCurrentProfile, currentProfile } = useProfileStore()
-
-
-    useEffect(() => {
-        setCurrentProfile(params?.id)
-    }, [])
-
-    useEffect(() => { setIsEditProfileOpen(false) }, [])
+            let [showMenu, setShowMenu] = useState<boolean>(false)
+            let { isEditProfileOpen, setIsLoginOpen, setIsEditProfileOpen } = useGeneralStore()
+            let { setCurrentProfile, currentProfile } = useProfileStore()
 
 
+            useEffect(() => {
+                setCurrentProfile(params?.id)
+            }, [])
 
-    const goTo = () => {
-        if (!userContext?.user) return setIsLoginOpen(true)
-        router.push('/upload')
-    }
+            useEffect(() => { setIsEditProfileOpen(false) }, [])
 
-    const goToPeople = () => {
-        if (!userContext?.user) return setIsLoginOpen(true);
-        router.push("/people");
-      };
 
-      const goToCart = () => {
-        if (!userContext?.user) return setIsLoginOpen(true);
-        router.push("/cart");
-      };
+
+            const goTo = () => {
+                if (!userContext?.user) return setIsLoginOpen(true)
+                router.push('/upload')
+            }
+
+            const goToPeople = () => {
+                if (!userContext?.user) return setIsLoginOpen(true);
+                router.push("/people");
+            };
+
+            const goToCart = () => {
+                if (!userContext?.user) return setIsLoginOpen(true);
+                router.push("/cart");
+            };
 
      /* Genres */
     const [showGenresPopup, setShowGenresPopup] = useState(false);
@@ -184,6 +183,7 @@ const handleSearchName = async (event: { target: { value: string } }) => {
         { id: "26", name: "Electro" },
         { id: "6", name: "Electronic" },
         { id: "19", name: "Films" },
+        { id: "33", name: "Jazz" },
         { id: "20", name: "Games" },
         { id: "4", name: "Hip-hop" },
         { id: "21", name: "Instrumental" },
@@ -196,7 +196,10 @@ const handleSearchName = async (event: { target: { value: string } }) => {
         { id: "14", name: "Psy" },
         { id: "23", name: "Rap" },
         { id: "7", name: "Rave" },
+        { id: "32", name: "Street music" },
         { id: "1", name: "Techno" },
+        { id: "30", name: "Minimal techno" },
+        { id: "31", name: "Melodic techno" },
         { id: "15", name: "Trap" },
         { id: "8", name: "House" },
       ];
@@ -289,18 +292,18 @@ const handleSearchName = async (event: { target: { value: string } }) => {
                                     {searchProfiles.map((result, index) => (
                                         <div className="p-1" key={index}>
                                         <Link
-                                            href={result.type === "track" ? `/post/${result.id}/${result.profile?.user_id}` : `/profile/${result.id}`}
+                                            href={`/post/${result.profile?.user_id}/${result.id}`} 
                                             className="flex items-center justify-between w-full cursor-pointer hover:bg-[#1E2136] rounded-xl p-2 px-2 hover:text-white text-13px"
                                         >
                                             <div className="flex items-center">
                                             {result.type === "track" ? (
                                                 <>
-                                                <img className="rounded-2xl" width="40" src={useCreateBucketUrl(result.image || '')} />
+                                                <img className="rounded-2xl" width="40" height="40" src={useCreateBucketUrl(result.image || '')} />
                                                 <div className="truncate ml-2">{result?.name}</div>
                                                 </>
                                             ) : (
                                                 <>
-                                                <img className="rounded-2xl" width="40" src={useCreateBucketUrl(result.image || '')} />
+                                                <img className="rounded-2xl" width="40" height="40" src={useCreateBucketUrl(result.image || '')} />
                                                 <div className="truncate ml-2">{result.name}</div>
                                                 </>
                                             )}

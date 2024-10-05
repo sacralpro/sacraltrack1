@@ -13,14 +13,13 @@ import useCreatePost from "../hooks/useCreatePost";
 import { convertWavToMp3 } from '@/app/utils/audioConverter';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import toast from 'react-hot-toast';
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import Link from "next/link";
 import UploadModal from "@/app/components/UploadModal";
 
 
 //import { mp3Blob } from '@/app/utils/audioConverter';
 
-const genres = ['Genres', 'Afro house', 'Acapella', 'Ai', 'Ambient', 'Bass', 'Deep', 'Deep bass', 'Downtempo', 'Dubstep', 'DnB', 'Electronic', 'Electro', 'Films', 'Games', 'Hip-hop', 'House', 'Instrumental', 'K-pop', 'Lo-fi', 'Meditative', 'Minimal', 'Neurofunk', 'Poetry', 'Psychedelic', 'Rave', 'Techno', 'Trap']
+const genres = ['Genres', 'Afro house', 'Acapella', 'Ai', 'Ambient', 'Bass', 'Deep', 'Deep bass', 'Downtempo', 'Dubstep', 'DnB', 'Electronic', 'Electro', 'Films', 'Jazz', 'Games', 'Hip-hop', 'House', 'Instrumental', 'K-pop', 'Lo-fi', 'Meditative', 'Minimal', 'Neurofunk', 'Poetry', 'Psychedelic', 'Rave', 'Rap', 'Street music', 'Techno', 'Minimal techno', 'Melodic techno', 'Trap']
 // Define your list of genres
 
 export default function Upload() {
